@@ -119,7 +119,7 @@ vertex function can also be used with vertex input parameters in the query-body 
 === Security
 * Improved the backend security infrastructure for the Kafka loader.
 * Added xref:3.9@tigergraph-server:security:index.adoc#_udf_file_scanning[configurable security scanning for UDFs].
-* Updated our response to xref:master@home::cve-2022-30331.adoc[CVE-2022-30331].
+* Updated our response to xref:home:alerts:cve-2022-30331.adoc[CVE-2022-30331].
 
 == TigerGraph Suite Updates
 === Admin Portal
@@ -134,8 +134,8 @@ vertex function can also be used with vertex input parameters in the query-body 
 * [3.9.3] Users can now xref:insights:intro:applications.adoc[share] Insights widgets and applications to third-party websites and users without a TigerGraph login via a URL token.
 
 === GDS Library and ML Workbench
-* Added xref:1.3@pytigergraph:gds:dataloaders.adoc#nodepieceloader[NodePiece] node embedding algorithm.
-* Added pyTigerGraph support for xref:1.3@pytigergraph:core-functions:query.adoc#_runinstalledquery[running queries asynchronously] (i.e., running in the background).
+* Added xref:pytigergraph:gds:dataloaders.adoc#_nodepieceloader[NodePiece] node embedding algorithm.
+* Added pyTigerGraph support for xref:pytigergraph:core-functions:query.adoc#_runinstalledquery[running queries asynchronously] (i.e., running in the background).
 * [3.9.2] Added xref:graph-ml:using-an-algorithm:packaged-template-algorithms.adoc[packaged templated versions] of four xref:3.9@graph-ml:link-prediction:index.adoc[topological link prediction algorithms].
 * [3.9.2] Characterized each algorithm by readiness: Alpha, Beta, or Production.
 * [3.9.2] In the documentation, added a xref:graph-ml:intro:algorithm-table.adoc[table for Algorithm Availability and Dependencies].
