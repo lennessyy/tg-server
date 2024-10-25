@@ -214,7 +214,7 @@ blue_commons         release_2.6.0_05-09-2020 432763afc49bf986aed4731e50254243d3
 [NOTE]
 ====
 This endpoint is deprecated.
-Use `/informant/metrics/get/{metrics_category}` instead.
+Use `/informant/metrics/get/\{metrics_category\}` instead.
 ====
 
 
@@ -535,12 +535,12 @@ tigergraph_service_status{partition="1",replica="1",service_name="GSE"} 6
 
 === Monitor system metrics by category
 
-`POST /informant/metrics/get/{metrics_category}`
+`POST /informant/metrics/get/\{metrics_category\}`
 
 *Server*: Informant
 
 ==== Path Parameters
-`{metrics_category}` is one of the following: +
+`\{metrics_category\}` is one of the following: +
 (`cpu-memory`, `diskspace` , `network`, `qps`)
 
 `qps` means "queries per second".

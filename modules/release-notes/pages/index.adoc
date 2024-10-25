@@ -92,7 +92,7 @@ multiple edges of the same type] between vertices, to simplify application desig
 * `to_string()` is now a built-in GSQL function, supporting all xref:3.9@gsql-ref:ddl-and-loading:attribute-data-types.adoc#_primitive_types[primitive] and xref:3.9@gsql-ref:querying:accumulators.adoc#_vertex_attached_accumulators
 [scalar accumulator] data types. This means xref:3.9@gsql-ref:querying:func/query-user-defined-functions.adoc[user-defined functions] in `Exprfunctions.hpp` may no longer use the name `to_string()` (case-insensitive).
 * Added support for batch deletion of multiple edges between vertices, both with GSQL `DELETE` and as a xref:3.9@tigergraph-server:API:built-in-endpoints.adoc#_delete_an_edge_by_source_target_edge_type_and_discriminator[REST endpoint].
-* Standardized `SHOW PACKAGE` for xref:3.9@graph-ml:using-an-algorithm:index.adoc[packaged queries] to follow the same behavior as other `SHOW` catalog commands.
+* Standardized `SHOW PACKAGE` for xref:graph-ml:using-an-algorithm:index.adoc[packaged queries] to follow the same behavior as other `SHOW` catalog commands.
 * [3.9.2] `outdegree`
 xref:gsql-ref:querying:func/vertex-methods.adoc[vertex function]
 vertex function can also be used with vertex input parameters in the query-body statements, not only with SELECT block vertex aliases.
@@ -136,7 +136,7 @@ vertex function can also be used with vertex input parameters in the query-body 
 === GDS Library and ML Workbench
 * Added xref:pytigergraph:gds:dataloaders.adoc#_nodepieceloader[NodePiece] node embedding algorithm.
 * Added pyTigerGraph support for xref:pytigergraph:core-functions:query.adoc#_runinstalledquery[running queries asynchronously] (i.e., running in the background).
-* [3.9.2] Added xref:graph-ml:using-an-algorithm:packaged-template-algorithms.adoc[packaged templated versions] of four xref:3.9@graph-ml:link-prediction:index.adoc[topological link prediction algorithms].
+* [3.9.2] Added xref:graph-ml:using-an-algorithm:packaged-template-algorithms.adoc[packaged templated versions] of four xref:graph-ml:link-prediction:index.adoc[topological link prediction algorithms].
 * [3.9.2] Characterized each algorithm by readiness: Alpha, Beta, or Production.
 * [3.9.2] In the documentation, added a xref:graph-ml:intro:algorithm-table.adoc[table for Algorithm Availability and Dependencies].
 * [3.9.2] In the documentation, added a fuller explanation of how to xref:graph-ml:using-an-algorithm:index.adoc[install and run algorithms] using Python.
