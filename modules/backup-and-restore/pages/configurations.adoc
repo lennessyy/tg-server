@@ -20,7 +20,7 @@ If this parameter is set to true, `System.Backup.S3.Enable` cannot be set to tru
 |System.Backup.Local.Path |Local path to store the backup files.
 Required if backup is to be stored locally. | `null`
 
-|System.Backup.S3.AWSAccessKeyID |The AWS access key ID used for the S3 backup bucket. It corresponds to the "Access Key" in GCS and the "Account Name" in Azure Blob, respectively. | `null`
+|System.Backup.S3.AWSAccessKeyID |The access key for the cloud storage bucket. For AWS, the S3 access key ID; for GCS, the "Access Key". For Azure, the blob "Account Name". | `null`
 
 |System.Backup.S3.AWSSecretAccessKey |The secret access key used for the AWS S3 bucket. It corresponds to the "Secret" in GCS and the "Account Key" in Azure Blob, respectively.
 
