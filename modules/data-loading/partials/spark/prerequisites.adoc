@@ -1,12 +1,13 @@
+
 === Compatibility
-* TigerGraph 3.6.0 or higher.
+* TigerGraph 3.6.0 or higher. Job-level loading statistics are available in v3.10+.
 * Spark 3.2 or higher with Scala 2.12 and Scala 2.13.
 * JAVA 8 or higher.
 
 === Download the JARs
 This connector can be downloaded from the Maven central repository:
 https://central.sonatype.com/artifact/com.tigergraph/tigergraph-spark-connector/overview[Maven Central].
-It is available in three formats:
+The connector is available in three formats:
 
 
 
@@ -14,10 +15,6 @@ It is available in three formats:
 * `tigergraph-spark-connector-<version>-jar-with-dependencies.jar`: The `JAR` file that includes compiled classes, as well as all the dependencies.
 * `tigergraph-spark-connector-<version>.tar.gz`: The compressed `TAR` archive that includes `tigergraph-spark-connector-<version>.jar` and dependencies in separate `JAR` files.
 
-[IMPORTANT]
-====
-Beginning with version 0.2.0 of the connector, the following xref:data-loading:load-from-spark-dataframe.adoc#_connector_options[connector options] are required: `version`, `log.level`, and `log.file`.
-====
 To use the TigerGraph Spark connector in a Spark shell:
 
 .use the `--jars` option:
