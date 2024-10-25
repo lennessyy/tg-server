@@ -1,6 +1,6 @@
 = Read to Spark Dataframe
 
-The TigerGraph Spark Connector is used with
+The TigerGraph Spark Connector employs
 https://spark.apache.org[Apache Spark] to read data from TigerGraph.
 
 Supported reader types:
@@ -10,11 +10,14 @@ Supported reader types:
 * Run Pre-installed Query
 * Run Interpreted Query
 
+The same connector can be used as an intermediary to read data from a variety of sources and then
+xref:data-loading:load-from-spark-dataframe.adoc[stream data from Spark to TigerGraph.]
+
 include::partial$spark/jdbc-deprecation.adoc[]
 
 == Prerequisite
 
-include::partial$spark/prerequisite.adoc[]
+include::partial$spark/prerequisites.adoc[]
 
 == Overview
 TigerGraph Spark connector provides 4 kinds of reader options to read data from TigerGraph:
@@ -38,7 +41,7 @@ TigerGraph Spark connector provides 4 kinds of reader options to read data from 
 
 Please refer to the following sections for detailed usage and examples. Prior to that, ensure that the connection options are defined in advance.
 
-include::partial$spark/pre_def_options.adoc[]
+include::partial$spark/pre-def-options.adoc[]
 
 == Read Vertices
 === Read all vertices by type

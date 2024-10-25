@@ -1,4 +1,10 @@
+
 === Common Options
+
+[IMPORTANT]
+====
+Beginning with version 0.2.0 of the connector, the following xref:data-loading:load-from-spark-dataframe.adoc#_connector_options[connector options] are required: `version`, `log.level`, and `log.file`.
+====
 
 [separator=¦]
 |===
@@ -50,7 +56,7 @@ http(s)://192.168.1.3:14240
 
 ¦ `ssl.mode`
 ¦ basic
-¦ The SSL mode, supported values: `basic`, `verifyCA` and `verifyHostname`.
+¦ The SSL mode. Supported values: `basic`, `verifyCA` and `verifyHostname`.
 
 When setting it to `verifyCA` or `verifyHostname`, the truststore file should be given.
 ¦ SSL
