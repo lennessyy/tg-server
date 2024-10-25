@@ -281,7 +281,8 @@ For now, TigerGraph CDC Service will *NOT* produce CDC messages for such “impl
 ==== Extra CDC message for Edge Update
 Edge updates may include additional information in specific scenarios.
 
-.In such cases, TigerGraph CDC will generate an additional CDC message for the corresponding "extra" edge.
+In such cases, TigerGraph CDC will generate an additional CDC message for the corresponding "extra" edge.
+
 [cols="2", separator=¦ ]
 |===
 ¦ Case ¦ Description
@@ -290,7 +291,7 @@ Edge updates may include additional information in specific scenarios.
 ¦ For insertion or modification on directed edge type without a reverse edge type, TigerGraph CDC will generate an extra CDC message with a field "operator": "insert-only" for a target vertex, however, there is no CDC message for source vertex.
 
 ¦ For undirected edge, and directed edge with reverse edge type
-¦ For insertion/modification/deletion on an undirected edge, or directed edge with a reverse edge type, TigerGraph will update 2 edges simultaneously.
+¦ For insertion/modification/deletion on an undirected edge, or directed edge with a reverse edge type, TigerGraph will update 2 edges simultaneously:
+the “origin” edge and the “extra” edge with switched source and target vertex.
 
-The “origin” edge and the “extra” edge with switched source and target vertex.
-
+|===
