@@ -262,7 +262,7 @@ There are three main options for tagging vertices in the base graph.
 In GSQL, special vertex methods are provided to access and modify the tags of a vertex in a DML query (full list available on page xref:gsql-ref:querying:func/vertex-methods.adoc[]).
 These functions are only available for vertex aliases (defined in the `FROM` clause of a `SELECT` statement); they cannot be applied to vertex variables in other contexts.
 
-There are xref:qsql-ref:querying:func/vertex-methods.adoc[8 DML-level tag-access functions] in the vertex-query block or edge-query block. Use the xref:gsql-ref:querying:func/vertex-methods.adoc#_addtags[addTags()] function to tag a vertex.
+There are xref:gsql-ref:querying:func/vertex-methods.adoc[8 DML-level tag-access functions] in the vertex-query block or edge-query block. Use the xref:gsql-ref:querying:func/vertex-methods.adoc#_addtags[addTags()] function to tag a vertex.
 
 ==== Required privilege
 
