@@ -51,7 +51,7 @@ Except for the above specific situations, leave it empty.| `null`
 
 |System.Backup.CompressProcessNumber | Number of concurrent processes for compression during backup. `0` means the number of processes used to compress is equal to the number of CPU cores on each node.
 
-It's recommended to keep the default value `10`.
+We recommending keeping the default value `10`.
 | `10`
 
 |System.Backup.DecompressProcessNumber | The number of concurrent processes for decompression during the restore.
