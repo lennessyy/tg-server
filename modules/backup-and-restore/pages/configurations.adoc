@@ -13,24 +13,19 @@ The following is a list of configurations available for backup and restore.
 |===
 |Configuration parameter |Description |Default
 
-|System.Backup.Local.Enable |Whether to store the database backup data to a local path. *IMPORTANT*: See note at end of table.
-
+|System.Backup.Local.Enable |Whether to store the database backup data to a local path.
 If this parameter is set to true, `System.Backup.S3.Enable` cannot be set to true.
 |`false`
 
 |System.Backup.Local.Path |Local path to store the backup files.
-Required if backup is to be stored locally. |null
+Required if backup is to be stored locally. | `null`
 
-|System.Backup.S3.AWSAccessKeyID |AWS access key ID for s3 bucket of
-backup.
-Required if backup is to be stored on S3. |null
+|System.Backup.S3.AWSAccessKeyID |The access key for the cloud storage bucket. For AWS, the S3 access key ID; for GCS, the "Access Key". For Azure, the blob "Account Name". | `null`
 
-|System.Backup.S3.AWSSecretAccessKey |Secret access key for s3
-bucket.
-Required if backup is to be stored on S3.
+|System.Backup.S3.AWSSecretAccessKey |The {secret access key, secret, secret} for the {AWS S3, Azure Blob, GCS} bucket, respectively.
 
 *NOTE*: If setting this in interactive mode, store the key in a file and provide the path to the file, e.g., `@/tmp/test_secret`.
-|`+nan+`
+|`+null+`
 
 |System.Backup.S3.RoleARN |The AWS role for accessing s3 buckets.
 S3 Role ARN takes priority over access keys. For more information, see link:https://docs.aws.amazon.com/IAM/latest/APIReference/API_Role.html[AWS role ARN documentation].
@@ -38,22 +33,32 @@ S3 Role ARN takes priority over access keys. For more information, see link:http
 *NOTE*: This is only for AWS S3, and TigerGraph assumes the credentials for using `sts:AssumeRole` have been set up. You can verify the credentials are ready by running link:https://docs.aws.amazon.com/cli/latest/reference/sts/assume-role.html#examples[aws sts assume-role]. One way to set up credentials is to configure access key id, secret access key and region with AWS CLI `aws configure`.
 |`+nan+`
 
-|System.Backup.S3.BucketName |Name of the S3 bucket to store backup files.
-Required if backup is to be stored on S3.|null
+|System.Backup.S3.BucketName |The {bucket, container, bucket} name for {AWS, Azure, GCS}, respectively.|null
 
-|System.Backup.S3.Enable |Whether to store the database backup data to S3.
-Required if backup is to be stored on S3.
+
+|System.Backup.S3.Enable |Data is backed up to various S3-compatible storage services, including AWS S3, S3-compatible services such as Ceph S3, 
+and specifically supported services like Google Cloud Storage (GCS) and Azure Blob Storage. 
+The specific storage service used for the backup is determined by the `System.Backup.S3.Endpoint` configuration setting. 
 
 If this parameter is set to true, `System.Backup.Local.Enable` cannot be set to true.|`+false+`
 
-|System.Backup.S3.Endpoint | Endpoint to use instead of the S3 default endpoint. Must be a fully qualified URL.
-Typically used when operating in a private network or with a non-AWS S3-compatible endpoint. | null
+|System.Backup.S3.Endpoint 
+a| A fully qualified URI, such as https://s3.amazonaws.com/, 
+is used to specify the storage service’s endpoint for the client.
+It is used in the following situations:
+
+* To backup to a private AWS S3, typically set it to "https://s3.amazonaws.com/" or any available URI.
+* To backup to an S3-compatible service, set it to its corresponding service URI.
+* To backup to Google Cloud Storage (GCS), set it to "https://storage.googleapis.com"
+* To backup to Azure Blob, set it to "https://<your storage account name>.blob.core.windows.net"." +
+
+Except for the above specific situations, leave it empty.| `null`
 
 |System.Backup.TimeoutSec |Timeout limit for the backup operation in seconds |`+18000+`
 
-|System.Backup.CompressProcessNumber | Number of concurrent processes for compression during backup.
+|System.Backup.CompressProcessNumber | Number of concurrent processes for compression during backup. `0` means the number of processes used to compress is equal to the number of CPU cores on each node.
 
-It's recommended to keep the default value `10`, which means the number of processes used to compress is equal to the number of CPU cores on each node.
+We recommending keeping the default value `10`.
 | `10`
 
 |System.Backup.DecompressProcessNumber | The number of concurrent processes for decompression during the restore.
@@ -64,8 +69,6 @@ It's recommended to keep the default value `10`, which means the number of proce
 | "DefaultCompression"
 |===
 
-IMPORTANT: If `System.Backup.Local.Enable` is set to `true`, this also enables a daily full backup at 12:00am UTC.
-
 == Configure backup and restore
 
 Running `gadmin config entry backup` allows you to enter the value for each parameter individually.
@@ -74,18 +77,22 @@ Alternatively, you can use `gadmin config set <parameter>` to change the value o
 
 After configuring the parameters, run `gadmin config apply` to apply the new parameter values.
 
-== Configure backup to AWS S3 Endpoint
+== Configure System.Backup.S3.Endpoint
 
 Typically, there's no need to configure the `System.Backup.S3.Endpoint` parameter on a TigerGraph Server.
-This is because the system auto-detects the regional endpoint for AWS S3 backups.
+This is because the system auto-detects the regional endpoint for AWS S3 backups. 
 
 .Users should configure this parameter *only* for special cases, such as:
-* When using S3 in FIPS mode.
-* When connecting to a private or localized cloud environment.
-* When integrating with an S3-compatible service that requires a specific endpoint.
+* To backup to a private AWS S3, typically set it to "https://s3.amazonaws.com/" or any available URI.
+* To backup to an S3-compatible service, set it to its corresponding service URI.
+* To backup to Google Cloud Storage (GCS), set it to "https://storage.googleapis.com"
+* To backup to Azure Blob, set it to "https://<your storage account name>.blob.core.windows.net"."
 
-For more information please see https://docs.aws.amazon.com/general/latest/gr/s3.html#s3_region[AWS Service Endpoints], generally,
-to configure backup files to an AWS S3 Bucket for an on-premise TigerGraph Server cluster, users need to complete the following steps:
+Except for the above specific situations, leave it empty.
+
+
+== Backup to AWS S3
+To configure backup files to an AWS S3 Bucket for an on-premises TigerGraph Server cluster, complete the following steps:
 
 . Create an S3 bucket in AWS
 . Create an AWS IAM user
@@ -156,9 +163,47 @@ gadmin config set "System.Backup.S3.RoleARN" "arn:aws:iam::account:role/role-nam
 ----
 gadmin config apply -y
 ----
+
+== Backup to Azure Blob
+
+Similar to AWS S3, once the Azure Blob Container is created and configured properly, then configure it to be your backup storage via the following steps.
+You may find Microsoft's https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blobs-introduction[Introduction to Azure Blob Storage] to be helpful.
+users only need to complete the configurations by the following steps:
+
+. Enable storing backup data in S3
 +
-.Restart all services
 [console,]
 ----
-gadmin restart all -y
+gadmin config set "System.Backup.S3.Enable" "true"
+----
+. Specify the backup S3 Endpoint
++
+[console,]
+----
+gadmin config set "System.Backup.S3.Endpoint" "https://<account-name>.blob.core.windows.net"
+----
+. Specify bucket name
++
+[console,]
+----
+gadmin config set "System.Backup.S3.BucketName" "<container-name>"
+----
+. Set S3 backup AccessKeyID
++
+[console,]
+----
+gadmin config set "System.Backup.S3.AWSAccessKeyID" "<account-name>"
+----
+
+. Set S3 backup SecretAccessKey
++
+[console,]
+----
+gadmin config set "System.Backup.S3.AWSSecretAccessKey" "<account-key>"
+----
+. Apply the new parameter values
++
+[console,]
+----
+gadmin config apply -y
 ----
