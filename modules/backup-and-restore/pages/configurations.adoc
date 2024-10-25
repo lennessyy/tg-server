@@ -85,7 +85,7 @@ Except for the above specific situations, leave it empty.
 
 
 == Backup to AWS S3
-To configure backup files to an AWS S3 Bucket for an on-premise TigerGraph Server cluster, users need to complete the following steps:
+To configure backup files to an AWS S3 Bucket for an on-premises TigerGraph Server cluster, complete the following steps:
 
 . Create an S3 bucket in AWS
 . Create an AWS IAM user
