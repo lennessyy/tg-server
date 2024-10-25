@@ -155,7 +155,8 @@ gadmin config apply -y
 
 == Backup to Azure Blob
 
-Similar to AWS S3, once the Azure Blob Container is created and configured properly, for more information,see https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blobs-introduction[Introduction to Azure Blob Storage],
+Similar to AWS S3, once the Azure Blob Container is created and configured properly, then configure it to be your backup storage via the following steps.
+You may find Microsoft's https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blobs-introduction[Introduction to Azure Blob Storage] to be helpful.
 users only need to complete the configurations by the following steps:
 
 . Enable storing backup data in S3
