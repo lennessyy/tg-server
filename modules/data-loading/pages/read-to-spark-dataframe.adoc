@@ -1,7 +1,9 @@
 = Read to Spark Dataframe
 
-The TigerGraph Spark Connector is used with
+The TigerGraph Spark Connector employs
 https://spark.apache.org[Apache Spark] to read data from TigerGraph.
+The same connector can be used as an intermediary to read data from a variety of sources and then
+xref:data-loading:load-from-spark-dataframe.adoc[stream data from Spark to TigerGraph.]
 
 Supported reader types:
 
