@@ -236,8 +236,8 @@ The following table details the built-in roles and their corresponding set of pr
 
 | `superuser`
 | Global
-| All supported RBAC privileges
-| `READ_SCHEMA`
+| All supported RBAC privileges:
+`READ_SCHEMA`
 `WRITE_SCHEMA`
 `READ_LOADINGJOB`
 `EXECUTE_LOADINGJOB`
