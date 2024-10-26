@@ -417,6 +417,9 @@ Then the global loading process will exit and fail the local job after timeout w
 |===
 ¦ Description ¦ Version Introduced
 
+¦A full export package now includes access policies and template queries.
+¦v4.1.0
+
 ¦ Users could encounter file input/output policy violations when upgrading a TigerGraph version.
 See xref:tigergraph-server:security:gsql-file-input-policy.adoc#_backward_compatibility[Input policy backward compatibility.]
 ¦ v3.10.0
