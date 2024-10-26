@@ -36,7 +36,8 @@ The following setup is needed in order to enable Cross Region Replication.
 
 Retrieve the latest backup, for instance, `pr_latest_backup` from the Primary Cluster. How recent the backup is will determine how much the DR cluster lags behind and how long it will take to catch up with the Primary cluster.
 
-If there is no proper backup, use `gadmin backup create <pr_latest_backup>` to create one. For more details refer to xref:tigergraph-server:backup-and-restore:backup-cluster.adoc[].
+If there is no suitable backup, use `gadmin backup create <pr_latest_backup>` to create one.
+For more details refer to xref:tigergraph-server:backup-and-restore:backup-cluster.adoc[].
 
 For how to restore a cluster from a backup that was created from another database cluster (cross cluster), refer to xref:tigergraph-server:backup-and-restore:cross-cluster-backup.adoc[].
 
