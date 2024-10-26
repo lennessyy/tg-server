@@ -8,6 +8,10 @@ This data can be subsequently imported in order to recreate the same database, i
 
 To see how to Export/Import selected individual graphs in a database refer to xref:tigergraph-server:backup-and-restore:single-graph-import-export.adoc[].
 
+[NOTE]
+====
+Beginning with version 4.1, a full export package now includes access policies and template queries.
+====
 
 [IMPORTANT]
 ====
