@@ -6,6 +6,11 @@ This data can be subsequently imported in order to recreate the same graph data,
 
 To see how to Export/Inport all graphs in a database at once refer to xref:database-import-export.adoc[].
 
+[NOTE]
+====
+Beginning with version 4.1, a full export package now includes access policies and template queries.
+====
+
 [IMPORTANT]
 ====
 Import/export is a complement to xref:tigergraph-server:backup-and-restore:index.adoc[], but not a substitute.
