@@ -31,8 +31,8 @@ To use the temporary credential, add the below configs in the data source defini
 {
     "type": "s3",
     "file.reader.settings.fs.s3a.aws.credentials.provider": "org.apache.hadoop.fs.s3a.TemporaryAWSCredentialsProvider",
-    "file.reader.settings.fs.s3a.access.key": "The <AccessKeyId> in credential",
-    "file.reader.settings.fs.s3a.secret.key": "The <SecretAccessKey> in credential",
+    "access.key": "The <AccessKeyId> in credential",
+    "secret.key": "The <SecretAccessKey> in credential",
     "file.reader.settings.fs.s3a.session.token": "The <SessionToken> in credential"
 }
 
