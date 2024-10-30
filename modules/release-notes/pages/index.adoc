@@ -5,21 +5,21 @@
 :toc:
 :toclevels:2
 
-TigerGraph Server {page-component-version}.3-3 LTS was released on February 15th, 2024.
+TigerGraph Server 3.9.3-3 LTS was released on February 15th, 2024.
 
-TigerGraph Server {page-component-version}.3-2 LTS was released on January 16th, 2024.
+TigerGraph Server 3.9.3-2 LTS was released on January 16th, 2024.
 
-TigerGraph Server {page-component-version}.3-1 LTS was released on December 5th, 2023.
+TigerGraph Server 3.9.3-1 LTS was released on December 5th, 2023.
 
-TigerGraph Server {page-component-version}.3 LTS was released on November 7th, 2023.
+TigerGraph Server 3.9.3 LTS was released on November 7th, 2023.
 
-TigerGraph Server {page-component-version}.2-1 LTS was released on October 10, 2023.
+TigerGraph Server 3.9.2-1 LTS was released on October 10, 2023.
 
-TigerGraph Server {page-component-version}.2 LTS was released on June 29, 2023.
+TigerGraph Server 3.9.2 LTS was released on June 29, 2023.
 
-TigerGraph Server {page-component-version}.1 LTS was released on March 22, 2023.
+TigerGraph Server 3.9.1 LTS was released on March 22, 2023.
 
-TigerGraph Server {page-component-version}.0 LTS was released on February 28th, 2023.
+TigerGraph Server 3.9.0 LTS was released on February 28th, 2023.
 
 LTS versions are supported for 24 months from their initial release (X.X.0) and should be the choice for production deployments.
 
@@ -32,10 +32,10 @@ LTS versions are supported for 24 months from their initial release (X.X.0) and 
 * *Improved monitoring and logging* - Facilitates better workload management for xref:3.9@gui:admin-portal:monitoring/queries.adoc[queries] and xref:3.9@gsql-ref:ddl-and-loading:managing-loading-job.adoc[loading jobs].
 
 === 3.9.3
-* *xref:gsql-ref:ddl-and-loading:managing-loading-job.adoc[Real-time data Ingestion Monitoring]* - Improved stability and performance of real-time loading job status updates for high speed and volume data.
-* *xref:tigergraph-server:system-management:workload-management.adoc[Workload Management]* — Automatically assigns query tasks to the least-busy resources to maximize productivity by adding parameters xref:tigergraph-server:system-management:workload-management.adoc#_query_routing_schemes[based on CPU usage]
-* *xref:tigergraph-server:kubernetes:[Support for Kubernetes]* — Enables simple, automated deployment and scaling of software components to meet dynamic needs, lowering operational costs.
-* *xref:gsql-ref:openCypher-in-gsql:openCypher-in-gsql.adoc[Integrates OpenCypher]* - Adds a language familiar to many developers, to speed up creating and migrating graph queries, before leaning into GSQL for advanced and high-performance graph analytics.
+* *xref:3.9@gsql-ref:ddl-and-loading:managing-loading-job.adoc[Real-time data Ingestion Monitoring]* - Improved stability and performance of real-time loading job status updates for high speed and volume data.
+* *xref:3.9@tigergraph-server:system-management:workload-management.adoc[Workload Management]* — Automatically assigns query tasks to the least-busy resources to maximize productivity by adding parameters xref:3.9@tigergraph-server:system-management:workload-management.adoc#_query_routing_schemes[based on CPU usage]
+* *xref:3.9@tigergraph-server:kubernetes:[Support for Kubernetes]* — Enables simple, automated deployment and scaling of software components to meet dynamic needs, lowering operational costs.
+* *xref:3.9@gsql-ref:openCypher-in-gsql:openCypher-in-gsql.adoc[Integrates OpenCypher]* - Adds a language familiar to many developers, to speed up creating and migrating graph queries, before leaning into GSQL for advanced and high-performance graph analytics.
 
 == Detailed List of New and Modified Features
 
@@ -52,8 +52,8 @@ LTS versions are supported for 24 months from their initial release (X.X.0) and 
 ** `/informant/metrics/get/{metrics_category}` provides filterable JSON formatted system performance metrics.
 ** [3.9.2] The filter for `/informant/metrics/get/cpu-memory` now accepts a list of ServiceDescriptors instead of a single ServiceDescriptor.
 ** [3.9.2] `/gsqlserver/gsql/clear-store` is equivalent to `GSQL CLEAR GRAPH STORE -HARD`
-** [3.9.3] Added MirrorMaker (xref:tigergraph-server:data-loading:data-streaming-connector/kafka.adoc[external Kafka]) as a new type of GSQL data source.
-** [3.9.3] Added new REST parameter `/allowExisting` to the `POST /requestoken` xref:tigergraph-server:API:built-in-endpoints.adoc[endpoint].
+** [3.9.3] Added MirrorMaker (xref:3.9@tigergraph-server:data-loading:data-streaming-connector/kafka.adoc[external Kafka]) as a new type of GSQL data source.
+** [3.9.3] Added new REST parameter `/allowExisting` to the `POST /requestoken` xref:3.9@tigergraph-server:API:built-in-endpoints.adoc[endpoint].
 
 * Added or changed xref:3.9@tigergraph-server:reference:configuration-parameters.adoc[configuration parameters]:
 ** `KafkaConnect.AllowedTaskPerCPU` limits the number of concurrent kafka loading tasks.
@@ -67,7 +67,7 @@ LTS versions are supported for 24 months from their initial release (X.X.0) and 
 xref:3.9@tigergraph-server:reference:configuration-parameters.adoc#_informant[Informant.RetentionPeriodDay] and
 xref:3.9@tigergraph-server:reference:configuration-parameters.adoc#_ts3[TS3.RetentionPeriodDay] configuration parameters from 30 days to 7 days, to reduce disk consumption and improve system history query performanace.
 * [3.9.3] Real-time data Ingestion monitors the progress and integrity for high-speed data loading up to terabytes.
-* [3.9.3] Simplified the xref:tigergraph-server:backup-and-restore:cross-cluster-backup.adoc[cross-cluster restore] process by including metadata with the backup files.
+* [3.9.3] Simplified the xref:3.9@tigergraph-server:backup-and-restore:cross-cluster-backup.adoc[cross-cluster restore] process by including metadata with the backup files.
 
 === GSQL Command and Querying Language
 
@@ -77,16 +77,16 @@ xref:3.9@tigergraph-server:reference:configuration-parameters.adoc#_ts3[TS3.Rete
 Streamlined the user experience for creating loading jobs for data stored in AWS, GCP, and Azure, directly integrating the data streaming connector with GSQL and reducing the steps needed to load data.
 ** Introduced a new `STREAM` data loading type that simplifies the xref:3.9@tigergraph-server:data-loading:index.adoc[data loading process] from remote data storage.
 * Added a new set of loading job xref:3.9@gsql-ref:ddl-and-loading:functions/token/index.adoc[token functions for string manipulation].
-* [3.9.2] Added configuration parameter xref:tigergraph-server:reference:configuration-parameters.adoc#_kafkaconnect[`KafkaConnect.AllowedTaskPerCPU`] to set a maximum number of concurrent connector tasks.
+* [3.9.2] Added configuration parameter xref:3.9@tigergraph-server:reference:configuration-parameters.adoc#_kafkaconnect[`KafkaConnect.AllowedTaskPerCPU`] to set a maximum number of concurrent connector tasks.
 * [3.9.2] The default mode for the Kafka Connector is `EOF="true"`
-* [3.9.3] xref:gsql-ref:ddl-and-loading:running-a-loading-job.adoc#_max_percent_error_mpe[Added `-max_percent_error`] option to `RUN LOADING JOB` to automatically abort the job if the number of invalid data lines exceeds the given threshold.
+* [3.9.3] xref:3.9@gsql-ref:ddl-and-loading:running-a-loading-job.adoc#_max_percent_error_mpe[Added `-max_percent_error`] option to `RUN LOADING JOB` to automatically abort the job if the number of invalid data lines exceeds the given threshold.
 
 ==== Schema
 * Full support for xref:3.9@gsql-ref:ddl-and-loading:defining-a-graph-schema.adoc#_discriminator[
 multiple edges of the same type] between vertices, to simplify application design for time series data and other complex large data sets.
-* [3.9.3] xref:gsql-ref:openCypher-in-gsql:openCypher-in-gsql.adoc[Integrates OpenCypher] to speed up creating and migrating graph queries.
-* [3.9.3] Relaxed the rules for xref:tigergraph-server:user-access:user-management.adoc[GSQL usernames].
-* [3.9.3] `FUNCTION`, `ROW`, `POLICY` added to xref:gsql-ref:appendix:keywords-and-reserved-words.adoc#_reserved_word_list[reserved words list].
+* [3.9.3] xref:3.9@gsql-ref:openCypher-in-gsql:openCypher-in-gsql.adoc[Integrates OpenCypher] to speed up creating and migrating graph queries.
+* [3.9.3] Relaxed the rules for xref:3.9@tigergraph-server:user-access:user-management.adoc[GSQL usernames].
+* [3.9.3] `FUNCTION`, `ROW`, `POLICY` added to xref:3.9@gsql-ref:appendix:keywords-and-reserved-words.adoc#_reserved_word_list[reserved words list].
 
 ==== Querying and Query Management
 * `to_string()` is now a built-in GSQL function, supporting all xref:3.9@gsql-ref:ddl-and-loading:attribute-data-types.adoc#_primitive_types[primitive] and xref:3.9@gsql-ref:querying:accumulators.adoc#_vertex_attached_accumulators
@@ -94,9 +94,9 @@ multiple edges of the same type] between vertices, to simplify application desig
 * Added support for batch deletion of multiple edges between vertices, both with GSQL `DELETE` and as a xref:3.9@tigergraph-server:API:built-in-endpoints.adoc#_delete_an_edge_by_source_target_edge_type_and_discriminator[REST endpoint].
 * Standardized `SHOW PACKAGE` for xref:graph-ml:using-an-algorithm:index.adoc[packaged queries] to follow the same behavior as other `SHOW` catalog commands.
 * [3.9.2] `outdegree`
-xref:gsql-ref:querying:func/vertex-methods.adoc[vertex function]
+xref:3.9@gsql-ref:querying:func/vertex-methods.adoc[vertex function]
 vertex function can also be used with vertex input parameters in the query-body statements, not only with SELECT block vertex aliases.
-* [3.9.3] Added parameters for xref:tigergraph-server:system-management:workload-management.adoc#_query_routing_schemes[GPE query routing based on CPU usage]
+* [3.9.3] Added parameters for xref:3.9@tigergraph-server:system-management:workload-management.adoc#_query_routing_schemes[GPE query routing based on CPU usage]
 
 //=== JDBC Spark Connector
 //
@@ -108,7 +108,7 @@ vertex function can also be used with vertex input parameters in the query-body 
 * Enhanced the functionality of the xref:3.9@kubernetes:k8s-operator/index.adoc[] so it is now the standard way to perform cluster operations with Kubernetes.
 * Added support for https://github.com/tigergraph/ecosys/blob/master/k8s/docs/04-manage/backup-and-restore/README.md[Backup and Restore], https://github.com/tigergraph/ecosys/blob/master/k8s/docs/02-get-started/get_started.md#upgrade-a-tigergraph-cluster[Upgrading the version of the TigerGraph server], and https://github.com/tigergraph/ecosys/blob/master/k8s/docs/02-get-started/get_started.md#update-the-resources-cpu-and-memory-of-the-tigergraph-cluster[Updating cluster resources]
 * [3.9.2] Support for https://github.com/tigergraph/ecosys/blob/master/k8s/docs/03-deploy/custom-containers.md[Custom Containers and Volumes].
-* [3.9.3] Added a link to TigerGraph Kubernetes xref:tigergraph-server:kubernetes:k8s-operator/index.adoc[preview documentation] on GitHub.
+* [3.9.3] Added a link to TigerGraph Kubernetes xref:3.9@tigergraph-server:kubernetes:k8s-operator/index.adoc[preview documentation] on GitHub.
 * [3.9.3] Improved help message menu of https://github.com/tigergraph/ecosys/blob/master/k8s/docs/02-get-started/get_started.md#install-kubectl-tg-plugin[kubectl-tg plugin].
 * [3.9.3] Made `.spec.initTGConfig.version` an optional field, so users don’t need to specify this field when using https://github.com/tigergraph/ecosys/blob/master/k8s/docs/02-get-started/get_started.md#-getting-started-tigergraph-on-kubernetes-[create/update] in the TigerGraph CR.
 * [3.9.3] https://github.com/tigergraph/ecosys/blob/master/k8s/docs/08-release-notes/operator-0.0.9.md#improvements[Improved security] by replace static passwords with private keys when executing cluster operations jobs.
@@ -125,17 +125,18 @@ vertex function can also be used with vertex input parameters in the query-body 
 === Admin Portal
 
 * Reworked the xref:3.9@gui:admin-portal:dashboard.adoc[Admin Portal dashboard] to show the relationship hierarchy and status of all TigerGraph components for at-a-glance understanding of the TigerGraph system.
-* [3.9.2] Added support for xref:gui:admin-portal:components/README.adoc[configuring two additional components]: GPE and Kafka.
+* [3.9.2] Added support for xref:3.9@gui:admin-portal:components/README.adoc[configuring two additional components]: GPE and Kafka.
 
 === GraphStudio
 * [3.9.2] Enabled GraphStudio to run on any node in a cluster, whether or not the node hosts a GUI server.
 * [3.9.2] Removed the *All Paths* option from the Explore Graph page, as this feature is not practical for large graphs.
-* [3.9.3] Added an openCypher xref:gui:graphstudio:write-open-cypher-queries-in-tigergraph.adoc[option] to the Add New Query dialog, to simplify writing and running openCypher in GraphStudio.
-* [3.9.3] Users can now xref:insights:intro:applications.adoc[share] Insights widgets and applications to third-party websites and users without a TigerGraph login via a URL token.
+* [3.9.3] Added an openCypher xref:3.9@gui:graphstudio:write-open-cypher-queries-in-tigergraph.adoc[option] to the Add New Query dialog, to simplify writing and running openCypher in GraphStudio.
+* [3.9.3] Users can now xref:3.9@insights:intro:applications.adoc[share] Insights widgets and applications to third-party websites and users without a TigerGraph login via a URL token.
 
 === GDS Library and ML Workbench
-* Added xref:pytigergraph:gds:dataloaders.adoc#_nodepieceloader[NodePiece] node embedding algorithm.
-* Added pyTigerGraph support for xref:pytigergraph:core-functions:query.adoc#_runinstalledquery[running queries asynchronously] (i.e., running in the background).
+
+* [pyTG 1.3] Added xref:pytigergraph:gds:dataloaders.adoc#_nodepieceloader[NodePiece] node embedding algorithm.
+* [pyTG 1.2] Added pyTigerGraph support for xref:pytigergraph:core-functions:query.adoc#_runinstalledquery[running queries asynchronously] (i.e., running in the background).
 * [3.9.2] Added xref:graph-ml:using-an-algorithm:packaged-template-algorithms.adoc[packaged templated versions] of four xref:graph-ml:link-prediction:index.adoc[topological link prediction algorithms].
 * [3.9.2] Characterized each algorithm by readiness: Alpha, Beta, or Production.
 * [3.9.2] In the documentation, added a xref:graph-ml:intro:algorithm-table.adoc[table for Algorithm Availability and Dependencies].
@@ -257,7 +258,7 @@ The import process will set pre-3.7 default-width fields to be 4 bytes.  3.7+ de
 * Fixed a GSQL query bug where it did not handle string parameters properly if they contained “&”.
 * Fixed a bug when upgrading to 3.9 that caused the old installation’s default `QueryUDF` files to be copied and overwrite the new 3.9 default QueryUDF files, so that queries using UDFs could not be installed.
 * Fixed a GSQL log bug where the `PermissionUtil.java` function was logging a stale Command Type rather than the current Command Type.
-* Restored limited ability to run xref:gsql-ref:querying:operators-and-expressions.adoc#_subquery_limitations[
+* Restored limited ability to run xref:3.9@gsql-ref:querying:operators-and-expressions.adoc#_subquery_limitations[
 subqueries having a SET<VERTEX> parameter].
 * Modified the `/deleted_vertex_check` and `/data_consistency_check` endpoints to be global, not associated with any particular graph.
 * Fix a SET type attribute bug in which the set’s values were not being deduplicated.
@@ -313,14 +314,14 @@ Previously affected character sets included the Unicode range `0080` to `00A0` a
 
 == Known Issues
 * Running either `EXPORT GRAPH ALL` or `IMPORT GRAPH ALL` resets the TigerGraph superuser's password back to its default value.  After running either command, change the superuser's password to make it secure again.
-* xref:backup-and-restore:database-import-export.adoc[EXPORT GRAPH ALL] does not correctly handle some special cases: loading jobs containing `DELETE` statements,  graph elements with composite keys, data including a `UDT` with a fixed string size.
+* xref:3.9@tigergraph-server:backup-and-restore:database-import-export.adoc[EXPORT GRAPH ALL] does not correctly handle some special cases: loading jobs containing `DELETE` statements,  graph elements with composite keys, data including a `UDT` with a fixed string size.
 * If the `FROM` clause pattern is a multi-hop and the `ACCUM` clause reads both primitive and container type attributes or accumulators of a vertex, the internal query rewriting logic may generate an invalid rewritten output.
 Resulting in the error message: `It is not allowed to mix primitive types and accumulator types in GroupByAccum`.
 * Users may see a high CPU usage caused by Kafka prefetching when there is no query or posting request.
 * GSQL query compiler may report a false error for a valid query using a vertex set variable (e.g. `Ent` in `reverse_traversal_syntax_err`) to specify the midpoint or target vertex of a path in a FROM clause pattern.
 
 * In 3.9.3, if a loading job is expected to load from a large batch of files or Kafka queues (e.g. more than 500), the job’s status may not be updated for an extended period of time. In this case, users should check the loader log file as an additional reference for loading status.
-* In 3.9.3, when a GPE/GSE is turned off right after initiating a loading job, the loading job is terminated internally. However, users may still observe the loading job as running on their end. Please see xref:gsql-ref:ddl-and-loading:running-a-loading-job.adoc[Troubleshooting Loading Job Delays] for additional details.
+* In 3.9.3, when a GPE/GSE is turned off right after initiating a loading job, the loading job is terminated internally. However, users may still observe the loading job as running on their end. Please see xref:3.9@gsql-ref:ddl-and-loading:running-a-loading-job.adoc[Troubleshooting Loading Job Delays] for additional details.
 * GSQL `EXPORT GRAPH` may fail and cause a GPE to crash when UDT type has a fixed STRING size.
 * After a global loading job is running for a while a fail can be encountered when getting the loading status due to `KAFKASTRM-LL` not being online, when actually the status is online.
 Then the global loading process will exit and fail the local job after timeout while waiting the global loading job to finish.
@@ -359,14 +360,14 @@ To better support Antlr processing, PRINT now removes any spaces from that key. 
 ** The filter for `/informant/metrics/get/cpu-memory` now accepts a list of ServiceDescriptors instead of a single ServiceDescriptor.
 
 * v3.9+:
-** Some user-defined functions (UDFs) may no longer be accepted due to xref:security:index.adoc#_udf_file_scanning[increased security screening].
+** Some user-defined functions (UDFs) may no longer be accepted due to xref:3.9@tigergraph-server:security:index.adoc#_udf_file_scanning[increased security screening].
 *** UDFs may no longer be called `to_string()`. This is now a built-in GSQL function.
 *** UDF names may no longer use the `tg_` prefix. Any user-defined function that began with `tg_` must be renamed or removed in `ExprFunctions.hpp`.
 
 
 === Deprecations
 * As of 3.9.3, `Build Graph Patterns` is deprecated and will not be updated or supported and instead
-we are focusing on xref:insights:widgets:index.adoc[Insights] as the tool of choice for building visual queries.
+we are focusing on xref:3.9@insights:widgets:index.adoc[Insights] as the tool of choice for building visual queries.
 * Kubernetes classic  mode (non-operator) is deprecated, as of v3.9.
 * The `WRITE_DATA` RBAC privilege is deprecated, as of v3.7.
 
