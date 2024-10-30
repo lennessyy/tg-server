@@ -54,7 +54,7 @@ Additionally, CDC can be xref:3.10@gui:admin-portal:components/cdc.adoc[configur
 * [3.10.1] xref:3.10@tigergraph-server:installation:bare-metal-install.adoc[Nodes can now be paired with hostnames in installation] - Users now can set the node by ip or hostname during installation.
 This is supported in both interactive and non-interactive installation.
 
-* [3.10.1] xref:3.10@cloud:solutions:access-solution/rest-requests.adoc#_secret_request[Make request with GSQL-Secret] -
+* [3.10.1] xref:cloud:solutions:access-solution/rest-requests.adoc#_secret_request[Make request with GSQL-Secret] -
 users can now use the authorization secret in a request header as a GSQL-Secret.
 
 * [3.10.1] xref:3.10@gsql-ref:appendix:keywords-and-reserved-words.adoc[Four new reserved keywords] - `FUNCTION`, `OPENCYPHER`, `POLICY`, and `ROW` have all been added to the DDL GSQL reserved words and keywords list.
@@ -105,7 +105,7 @@ users can now use the authorization secret in a request header as a GSQL-Secret.
 
 === System Management and Monitoring Enhancements ===
 
-* [3.10.2] **xref:3.10@{page-component-version}@tigergraph-server:API:built-in-endpoints.adoc#_monitor_system_metrics_openmetrics_format[Enhanced Metrics Reports]**
+* [3.10.2] **xref:3.10@tigergraph-server:API:built-in-endpoints.adoc#_monitor_system_metrics_openmetrics_format[Enhanced Metrics Reports]**
 Total and available capacity for CPU and memory are now reported by the `/informant/metrics` endpoint.
 
 === Kubernetes Operator
