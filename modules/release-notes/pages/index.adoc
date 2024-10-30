@@ -3,7 +3,7 @@
 :page-aliases: change-log.adoc, release-notes.adoc
 :fn-preview: footnote:preview[Features in the preview stage should not be used for production purposes. General Availability (GA) versions of the feature will be available in a later release.]
 
-TigerGraph Server {page-component-version}.0 LTS was released on June 17th, 2022.
+TigerGraph Server 3.6.0 LTS was released on June 17th, 2022.
 
 LTS versions are supported for 24 months from their initial release and should be the choice for production deployments.
 
@@ -22,12 +22,12 @@ xref:#_deprecation_and_compatibility_warnings[one rule regarding primary IDs of 
 Below is a list of new features and improvements:
 
 === Elasticity
-* Added support for provisioning xref:ha:elastic-cluster.adoc[Elastic Read-only (ER) clusters (Preview)]{fn-preview} with different partitions than the primary cluster.
+* Added support for provisioning xref:3.6@tigergraph-server:ha:elastic-cluster.adoc[Elastic Read-only (ER) clusters (Preview)]{fn-preview} with different partitions than the primary cluster.
 ** Note: This feature is currently in the preview stage only available for enterprise TigerGraph Cloud customers.
 If you are a paid TigerGraph Cloud enterprise customer and want to set up an ER cluster for your environment, please https://tigergraph.zendesk.com/hc/en-us/[open a support ticket].
 
 === Manageability
-* Introduced TigerGraph xref:kubernetes:k8s-operator/index.adoc[Kubernetes Operator (Preview)] {fn-preview}.
+* Introduced TigerGraph xref:3.6@tigergraph-server:kubernetes:k8s-operator/index.adoc[Kubernetes Operator (Preview)] {fn-preview}.
 TigerGraph Kubernetes Operator allows you to automate operations such as the creation, status checking and deletion of TigerGraph clusters.
 
 === Security
@@ -36,8 +36,8 @@ TigerGraph Kubernetes Operator allows you to automate operations such as the cre
 * [3.6.4] Tighten the file permissions for various files. (TP-3131, TP-3396)
 
 === Ecosystem integration
-* Added the ability to stream data from external Kafka clusters to xref:data-loading:data-streaming-connector.adoc[Data Streaming Connector].
-* Added the ability to stream AVRO data for all supported sources with xref:data-loading:data-streaming-connector.adoc[Data Streaming Connector].
+* Added the ability to stream data from external Kafka clusters to xref:3.6@tigergraph-server:data-loading:data-streaming-connector.adoc[Data Streaming Connector].
+* Added the ability to stream AVRO data for all supported sources with xref:3.6@tigergraph-server:data-loading:data-streaming-connector.adoc[Data Streaming Connector].
 
 === Performance
 * Improved data loading speed and reliability.
@@ -51,14 +51,14 @@ TigerGraph Kubernetes Operator allows you to automate operations such as the cre
 * [3.6.4] Added reports of vertices with empty string IDs to the data loading logs.
 
 === Data API service
-* Added two parameters `target_vertex_must_exist` and `source_vertex_must_exist` to xref:tigergraph-server:API:built-in-endpoints.adoc#_upsert_data_to_graph[the REST endpoint to upsert data].
+* Added two parameters `target_vertex_must_exist` and `source_vertex_must_exist` to xref:3.6@tigergraph-server:API:built-in-endpoints.adoc#_upsert_data_to_graph[the REST endpoint to upsert data].
 
 === Query Language Enhancement
 * Reducer function `add()` now accumulates values when loading to a `MAP` attribute.
 
 === GraphStudio and Admin Portal Enhancement
-* Added the ability to xref:{page-component-version}@gui:graphstudio:write-queries.adoc#_graph_data_science_library_queries[one-click install built-in Graph Data Science Library algorithms].
-* Added the ability to xref:{page-component-version}@gui:graphstudio:map-data-to-graph.adoc#_create_a_gcs_data_source[load data from Google Cloud Storage] through GraphStudio UI.
+* Added the ability to xref:3.6@gui:graphstudio:write-queries.adoc#_graph_data_science_library_queries[one-click install built-in Graph Data Science Library algorithms].
+* Added the ability to xref:3.6@gui:graphstudio:map-data-to-graph.adoc#_create_a_gcs_data_source[load data from Google Cloud Storage] through GraphStudio UI.
 * Added Japanese language support for GraphStudio and Admin Portal.
 
 === Graph Data Science Library Enhancement
@@ -220,14 +220,14 @@ TigerGraph Server 3.6.1 was released on July 7th, 2022.
 
 //* In rare cases, a GSE component in a cluster may get stuck in a refresh state after its status changes from leader to follower and back again in a very short time.
 //* GSE memory consumption in a cluster may be higher for the leader than a follower during data loading.
-//* In rare cases, system logs may briefly indicate a mismatched edge count between replicas on a cluster that is continuously loading and dropping edges. This mismatch corrects itself automatically as the system keeps running. Use the xref:tigergraph-server:API:built-in-endpoints.adoc[`/rebuildnow` endpoint] with `force=True` to force a rebuild and correct the issue.
+//* In rare cases, system logs may briefly indicate a mismatched edge count between replicas on a cluster that is continuously loading and dropping edges. This mismatch corrects itself automatically as the system keeps running. Use the xref:3.6@tigergraph-server:API:built-in-endpoints.adoc[`/rebuildnow` endpoint] with `force=True` to force a rebuild and correct the issue.
 
 * When available memory becomes very low in a cluster and there are a large number of vertex deletions to process, some remote servers might have difficulty receiving the metadata needed to be aware of all the deletions across the full cluster. The mismatched metadata will cause the GPE to go down.
 * If `System.Backup.Local.Enable` is set to `true`, this also enables a daily full backup at 12:00am UTC
 * Vertex primary IDs are treated as STRING, regardless of whether they are declared as STRING, INT, or UINT.
 If a vertex is defined to have INT or UINT type IDs, but the user tries to load string values, the string values will be accepted, because the type is not checked.
 If the `primary_id_as_attribute` option is selected, then attending to perform numeric options on a pirmary id may encounter a data type conflict error.
-* For a list of known issues for GraphStudio and Admin Portal, please see xref:{page-component-version}@gui:graphstudio:known-issues.adoc[Known issues for GraphStudio] and xref:{page-component-version}@gui:admin-portal:known-issues.adoc[Known issues for Admin Portal].
+* For a list of known issues for GraphStudio and Admin Portal, please see xref:3.6@gui:graphstudio:known-issues.adoc[Known issues for GraphStudio] and xref:3.6@gui:admin-portal:known-issues.adoc[Known issues for Admin Portal].
 
 == Release notes for previous versions
 * xref:attachment$Release_Notes_3.5.pdf[Release notes - TigerGraph 3.5]
@@ -243,7 +243,7 @@ Please use `POST /requesttoken` to request authentication tokens instead.
 If you have a create a token request that puts the credentials in the query string, all you need to do is use the `POST` endpoint and move your credentials to the request body. 
 * `GET /gsqlserver/gsql/queryinfo` endpoint on port 14240 now returns the query input parameters in the same order as they are in the query instead of an unordered list.
 * Deploying TigerGraph in Kubernetes now requires more service account permissions than previous versions.
-For details, see Prerequisites section in xref:kubernetes:quickstart-with-gke.adoc[], xref:kubernetes:quickstart-with-aks.adoc[], and xref:kubernetes:quickstart-with-eks.adoc[].
+For details, see Prerequisites section in xref:3.6@tigergraph-server:kubernetes:quickstart-with-gke.adoc[], xref:3.6@tigergraph-server:kubernetes:quickstart-with-aks.adoc[], and xref:3.6@tigergraph-server:kubernetes:quickstart-with-eks.adoc[].
 
 == Compatibility with TigerGraph 3.1
 
@@ -254,8 +254,8 @@ The following changes were made to the built-in roles in TigerGraph's Role-based
 * The built-in role `admin` can no longer create users
 ** To emulate the old `admin` role, create a global role with all `admin` privileges, and also grant the `WRITE_USER` privilege to the new role.
 * To learn more about role management and the privileges of built-in roles, see:
-** xref:user-access:role-management.adoc[]
-** xref:reference:list-of-privileges.adoc[]
+** xref:3.6@tigergraph-server:user-access:role-management.adoc[]
+** xref:3.6@tigergraph-server:reference:list-of-privileges.adoc[]
 
 == Compatibility with TigerGraph 2
 
@@ -266,7 +266,7 @@ Major revisions (e.g., from TigerGraph 2 to TigerGraph 3) are the opportunity to
 *Query and API compatibility*:
 
 * Some gadmin syntax has changed. Notably. `gadmin set config` is now `gadmin config set`.
-Please see xref:system-management:management-with-gadmin.adoc[Managing with gadmin].
-* Some features which were previously deprecated have been dropped. Please see xref:release-notes:v3.0-removal-of-previously-deprecated-features.adoc[V3.0 Removal of Previously Deprecated Features] for a detailed list.
+Please see xref:3.6@tigergraph-server:system-management:management-with-gadmin.adoc[Managing with gadmin].
+* Some features which were previously deprecated have been dropped. Please see xref:3.6@tigergraph-server:release-notes:v3.0-removal-of-previously-deprecated-features.adoc[V3.0 Removal of Previously Deprecated Features] for a detailed list.
 
 include::v3.0-removal-of-previously-deprecated-features.adoc[]
