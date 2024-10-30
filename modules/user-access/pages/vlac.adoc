@@ -64,7 +64,7 @@ Features not yet supported:
 In summary, all necessary operations to set up VLAC graphs and users are supported in GSQL. Due to a known bug, standard users (with `querywriter` and `queryreader` roles) can run some DDL operations which they should not be able to.
 ====
 
-We'll use the graph xref:gsql-ref:querying:appendix-query/example-graphs.adoc#_socialnet[socialNet] as an example in the following sections.
+We'll use the graph xref:gsql-ref:appendix:example-graphs.adoc#_social_net[socialNet] as an example in the following sections.
 
 == Tag Management
 
