@@ -7,5 +7,5 @@
 ** xref:linux.adoc[Install TigerGraph on Linux]
 ** xref:virtual-box.adoc[]
 ** Learn GSQL
-*** xref:gsql-ref:tutorials:gsql-101/index.adoc[]
-*** xref:gsql-ref:tutorials:pattern-matching/README.adoc[]
+*** xref:{page-component-version}@gsql-ref:tutorials:gsql-101/index.adoc[]
+*** xref:{page-component-version}@gsql-ref:tutorials:pattern-matching/README.adoc[]
