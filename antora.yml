@@ -1,5 +1,5 @@
 name: tigergraph-server
-title: TigerGraph DB 3.9
+title: TigerGraph DB
 version: '3.9'
 display_version: "3.9"
 start_page: intro:index.adoc
