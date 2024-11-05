@@ -53,7 +53,7 @@ megabytes of the log file before it gets rotated |`100`
 
 |Controller.BasicConfig.LogConfig.LogLevel |The log
 level(`DEBUG`,`INFO`,`WARN`,`ERROR`,`PANIC`,`FATAL`),
-default is INFO |`INFO`
+default is `INFO` |`INFO`
 
 |Controller.BasicConfig.LogConfig.LogRotationFileNumber |The maximum
 number of old log files to retain |`100`
@@ -391,8 +391,8 @@ filename |`90`
 |GSE.BasicConfig.LogConfig.LogFileMaxSizeMB |The maximum size in
 megabytes of the log file before it gets rotated |`100`
 
-|GSE.BasicConfig.LogConfig.LogLevel |The log level(``OFF'', ``BRIEF'',
-``DEBUG'', ``VERBOSE''), default is BRIEF |`BRIEF`
+|GSE.BasicConfig.LogConfig.LogLevel |The log level(`OFF`, `BRIEF`,
+`DEBUG`, `VERBOSE`), default is `BRIEF` |`BRIEF`
 
 |GSE.BasicConfig.LogConfig.LogRotationFileNumber |The maximum number of
 old log files to retain |`100`
@@ -428,7 +428,7 @@ responsive after the TTL. |`30`
 |GSQL.BasicConfig.LogConfig.LogFileMaxSizeMB |The maximum size in
 megabytes of the log file before it gets rotated |`100`
 
-|GSQL.BasicConfig.LogConfig.LogLevel |GSQL log level: ERROR, INFO, DEBUG
+|GSQL.BasicConfig.LogConfig.LogLevel |GSQL log level: `ERROR`, `INFO`, `DEBUG`
 |`INFO`
 
 |GSQL.BasicConfig.LogConfig.LogRotationFileNumber |The maximum number of
@@ -554,8 +554,8 @@ filename |`90`
 megabytes of the log file before it gets rotated |`100`
 
 |GUI.BasicConfig.LogConfig.LogLevel |The log
-level(``DEBUG'',``INFO'',``WARN'',``ERROR'',``PANIC'',``FATAL''),
-default is INFO |`INFO`
+level(`DEBUG`,`INFO`,`WARN`,`ERROR`,`PANIC`,`FATAL`),
+default is `INFO` |`INFO`
 
 |GUI.BasicConfig.LogConfig.LogRotationFileNumber |The maximum number of
 old log files to retain |`100`
@@ -641,8 +641,8 @@ their filename |`90`
 megabytes of the log file before it gets rotated |`100`
 
 |Informant.BasicConfig.LogConfig.LogLevel |The log
-level(``DEBUG'',``INFO'',``WARN'',``ERROR'',``PANIC'',``FATAL''),
-default is INFO |`INFO`
+level(`DEBUG`,`INFO`,`WARN`,`ERROR`,`PANIC`,`FATAL`),
+default is `INFO` |`INFO`
 
 |Informant.BasicConfig.LogConfig.LogRotationFileNumber |The maximum
 number of old log files to retain |`100`
@@ -678,7 +678,7 @@ Longer retention results in higher disk space usage and slower search for histor
 megabytes of the log file before it gets rotated |`100`
 
 |Kafka.BasicConfig.LogConfig.LogLevel |The log level for kafka
-(``TRACE'', ``DEBUG'', ``INFO'', ``WARN'', ``ERROR'', ``FATAL'' ``OFF'')
+(`TRACE`, `DEBUG`, `INFO`, `WARN`, `ERROR`, `FATAL`, `OFF`)
 |`INFO`
 
 |Kafka.BasicConfig.LogConfig.LogRotationFileNumber |The maximum number
@@ -737,8 +737,8 @@ Range is [0.5,10]. It is recommended to stay below 2.0. |`1.5` (default)
 in megabytes of the log file before it gets rotated |`100`
 
 |KafkaConnect.BasicConfig.LogConfig.LogLevel |The log level for kafka
-connect (``TRACE'', ``DEBUG'', ``INFO'', ``WARN'', ``ERROR'', ``FATAL''
-``OFF'') |`INFO`
+connect (`TRACE`, `DEBUG`, `INFO`, `WARN`, `ERROR`, `FATAL`
+`OFF`) |`INFO`
 
 |KafkaConnect.BasicConfig.LogConfig.LogRotationFileNumber |The maximum
 number of old log files to retain |`100`
@@ -788,8 +788,8 @@ their filename |`90`
 |KafkaLoader.BasicConfig.LogConfig.LogFileMaxSizeMB |The maximum size in
 megabytes of the log file before it gets rotated |`100`
 
-|KafkaLoader.BasicConfig.LogConfig.LogLevel |The log level(``OFF'',
-``BRIEF'', ``DEBUG'', ``VERBOSE''), default is BRIEF |`BRIEF`
+|KafkaLoader.BasicConfig.LogConfig.LogLevel |The log level(`OFF`,
+`BRIEF`, `DEBUG`, `VERBOSE`), default is `BRIEF` |`BRIEF`
 
 |KafkaLoader.BasicConfig.LogConfig.LogRotationFileNumber |The maximum
 number of old log files to retain |`100`
@@ -840,8 +840,8 @@ node |`1`
 in megabytes of the log file before it gets rotated |`100`
 
 |KafkaStreamLL.BasicConfig.LogConfig.LogLevel |The log level for Kafka
-stream LoadingLog (``TRACE'', ``DEBUG'', ``INFO'', ``WARN'', ``ERROR'',
-``FATAL'' ``OFF'') |`INFO`
+stream LoadingLog (`TRACE`, `DEBUG`, `INFO`, `WARN`, `ERROR`,
+`FATAL`, `OFF`) |`INFO`
 
 |KafkaStreamLL.BasicConfig.LogConfig.LogRotationFileNumber |The maximum
 number of old log files to retain |`100`
@@ -932,8 +932,8 @@ filename |`90`
 |RESTPP.BasicConfig.LogConfig.LogFileMaxSizeMB |The maximum size in
 megabytes of the log file before it gets rotated |`100`
 
-|RESTPP.BasicConfig.LogConfig.LogLevel |The log level(``OFF'',
-``BRIEF'', ``DEBUG'', ``VERBOSE''), default is BRIEF |`BRIEF`
+|RESTPP.BasicConfig.LogConfig.LogLevel |The log level(`OFF`,
+`BRIEF`, `DEBUG`, `VERBOSE`), default is `BRIEF` |`BRIEF`
 
 |RESTPP.BasicConfig.LogConfig.LogRotationFileNumber |The maximum number
 of old log files to retain |`100`
@@ -1348,8 +1348,8 @@ support one node)
 |ZK.BasicConfig.LogConfig.LogFileMaxSizeMB |The maximum size in
 megabytes of the log file before it gets rotated |`100`
 
-|ZK.BasicConfig.LogConfig.LogLevel |The log level for zk (``TRACE'',
-``DEBUG'', ``INFO'', ``WARN'', ``ERROR'', ``FATAL'' ``OFF'') |`INFO`
+|ZK.BasicConfig.LogConfig.LogLevel |The log level for zk (`TRACE`,
+`DEBUG`, `INFO`, `WARN`, `ERROR`, `FATAL`, `OFF`) |`INFO`
 
 |ZK.BasicConfig.LogConfig.LogRotationFileNumber |The maximum number of
 old log files to retain |`100`
