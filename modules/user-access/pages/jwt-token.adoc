@@ -398,6 +398,11 @@ For example, this is used to run the query {queryName} on the graph {graphName}:
 curl -s -H "Authorization: Bearer <JWT-TOKEN>" -X GET http://127.0.0.1:14240/restpp/query/{graphName}/{queryName}
 ----
 
+[NOTE]
+====
+The 3rd Party JWT Token only access RESTPP endpoints, but cannot access GSQL
+====
+
 == Potential Error Messages
 When using a JWT token for authentication, please consider these scenarios and handle the corresponding errors appropriately when working with JWT tokens for authentication.
 
