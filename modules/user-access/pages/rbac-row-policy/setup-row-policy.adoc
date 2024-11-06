@@ -305,7 +305,7 @@ GSQL > run query myTest4(["person1"] ,"Person")
 }
 ----
 +
-But, if a user, which is not granted the role of `superuser`, they will only see an exception message
+But, if a user, which is not granted the role of `superuser`, they will only see an exception message.
 +
 .Ex. Result:
 [console,gsql]
