@@ -400,7 +400,7 @@ curl -s -H "Authorization: Bearer <JWT-TOKEN>" -X GET http://127.0.0.1:14240/res
 
 [NOTE]
 ====
-The 3rd Party JWT Token only access RESTPP endpoints, but cannot access GSQL.
+The 3rd party JWT token can only access RESTPP endpoints, but cannot access GSQL endpoints.
 ====
 
 == Potential Error Messages
