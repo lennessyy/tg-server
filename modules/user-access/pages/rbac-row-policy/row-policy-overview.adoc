@@ -27,7 +27,7 @@ Here you can find the row policy EBNF examples for reference.
 
 * Currently, we only support row policy on vertices, not on edges.
 
-* Row policy will only regulate the read-related operations for vertices, including read, update and delete.
+* Row policy will only regulate the read-related operations for vertices, including read, update, and delete.
 
 * A global vertex can only hold one global row policy and cannot apply a local row policy on a global vertex in a graph.
 
