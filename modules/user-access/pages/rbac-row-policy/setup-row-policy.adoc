@@ -267,7 +267,8 @@ Used a vertex in expression 'to_vertex(vId, vType)' blocked by a row policy.
 In this case, "person1" has the attribute `gender` of `Male`, but "person2" has the attribute `gender` of `Female`.
 Hence, when using "person2" as the parameter, this query will raise an exception, informing the user that this query is blocked by a row policy.
 
-7. When trying to retrieve a vertex set using xref:gsql-ref:querying:func/vertex-methods.adoc#_to_vertex_set[to_vertex_set()], it will be regulated by row policies. To specify a row policy which is used as a vertex set expression, block the query with an exception, if this expression is blocked by a row policy.
+7. When trying to retrieve a vertex set using xref:{page-component-version}@gsql-ref:querying:func/vertex-methods.adoc#_to_vertex_set[to_vertex_set()], it will be regulated by row policies. 
+To specify a row policy which is used as a vertex set expression, block the query with an exception, if this expression is blocked by a row policy.
 +
 .Ex. Create another simple query:
 [console,gsql]
