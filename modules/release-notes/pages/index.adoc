@@ -373,4 +373,4 @@ we are focusing on xref:3.9@insights:widgets:index.adoc[Insights] as the tool of
 
 == Release notes for previous versions
 
-* xref:3.6@tigergraph-server:release-notes:index
+* xref:3.6@tigergraph-server:release-notes:index.adoc[]
