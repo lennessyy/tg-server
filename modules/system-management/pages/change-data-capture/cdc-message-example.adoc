@@ -234,7 +234,7 @@ The new format is
             ]
         },
         "attr_map_tuple": {
-            "op": "ReplaceOrAdd",
+            "op": "Add",
             "value": {
                 "i":[2,0], "f":[3,3], "b":[122281920, 314159]
             }
