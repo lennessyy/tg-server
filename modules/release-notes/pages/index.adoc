@@ -89,6 +89,8 @@ xref:tigergraph-server:system-management:management-commands.adoc#_gadmin_config
 
 * **xref:{page-component-version}@tigergraph-server:API:built-in-endpoints.adoc#_monitor_system_metrics_openmetrics_format[Enhanced Metrics Reports]** Total and available capacity for CPU and memory are now reported by the `/informant/metrics` endpoint.
 
+* **xref:{page-component-version}@tigergraph-server:troubleshooting:audit-log.adoc#_gsql_service_audit_logs[More detailed information in audit logs]**. Also, an authorized admin user can configure the audit logs to include PII.
+
 
 === Kubernetes Operator Enhancements
 
