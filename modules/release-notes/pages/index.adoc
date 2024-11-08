@@ -58,7 +58,7 @@ Available for TigerGraph's xref:tigergraph-server:data-loading:manage-data-sourc
 CDC continues to function as long as at least one replica per partition is online.
 Previously, Replica 1 needed to remain operational.
 
-* [4.1.1] CDC messages have a "graph" field to specify which graph was affected.
+* [4.1.1] **xref:system-management:change-data-capture/cdc-message-example.adoc#_other_message_fields[CDC messages have a "graph" field]** to specify which graph was affected.
 
 * **Backup HA**:
 Backups remain available even if a node fails.
@@ -89,7 +89,7 @@ xref:tigergraph-server:system-management:management-commands.adoc#_gadmin_config
 
 * **xref:{page-component-version}@tigergraph-server:API:built-in-endpoints.adoc#_monitor_system_metrics_openmetrics_format[Enhanced Metrics Reports]** Total and available capacity for CPU and memory are now reported by the `/informant/metrics` endpoint.
 
-* **xref:{page-component-version}@tigergraph-server:troubleshooting:audit-log.adoc#_gsql_service_audit_logs[More detailed information in audit logs]**. Also, an authorized admin user can configure the audit logs to include PII.
+* [4.1.1] **xref:{page-component-version}@tigergraph-server:troubleshooting:audit-log.adoc#_gsql_service_audit_logs[More detailed information in audit logs]**. Also, an authorized admin user can configure the audit logs to include PII.
 
 
 === Kubernetes Operator Enhancements
@@ -434,6 +434,9 @@ Then the global loading process will exit and fail the local job after timeout w
 [cols="2", separator=¦ ]
 |===
 ¦ Description ¦ Version Introduced
+
+¦In xref:system-management:change-data-capture/cdc-message-example.adoc#_message_examples[CDC messages], the format of map values has changed.
+¦v4.1.1
 
 ¦A full export package now includes access policies and template queries.
 ¦v4.1.0
