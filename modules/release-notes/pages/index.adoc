@@ -60,6 +60,8 @@ Previously, Replica 1 needed to remain operational.
 
 * [4.1.1] **xref:system-management:change-data-capture/cdc-message-example.adoc#_other_message_fields[CDC messages have a "graph" field]** to specify which graph was affected.
 
+* [4.1.1] **xref:cluster-and-ha-management:crr-index.adoc[Cross-Region Replication]** now includes loading jobs.
+.
 * **Backup HA**:
 Backups remain available even if a node fails.
 Previously, backups were unavailable if a node failed.
