@@ -39,26 +39,29 @@ The current message is the second message in the third batch of the transaction.
 .Other message fields are outlined in the table below:
 [cols="2", separator=¦ ]
 |===
-¦ Field ¦ Value Type: “Possible Values”
+¦ Field ¦ Value Type: Description of values
 
 ¦ `type`
-¦ String: “vertex” / ”vertex-type” / ”edge”
+¦ String: `“vertex”`, `”vertex-type”`, `”edge”`
 
 ¦ `operator`
-¦ String: ”insert” / ”insert-only” / ”delete”
+¦ String: `”insert”`, `”insert-only”`, `”delete”`
 
 ¦ `timestamp`
 ¦ UINT64:
 
-“*Non-transaction*: birth epoch time.” /
+*Non-transaction*: start epoch time /
 
-“*Transaction*: epoch time of transaction commit message.”
+*Transaction*: epoch time of transaction commit message
+
+¦ `graph` [added in 4.1.1]
+¦ String: name of updated graph
 
 ¦ `typename`
-¦ String: “type name of updated type”.
+¦ String: name of updated object type
 
 ¦ `content`
-¦ See xref:#_content_field_value_types_and_possible_values[] below.
+¦ See xref:#_content_field_value_types_and_possible_values[] below
 |===
 
 ==== Content Field Value Types and "Possible Values"
@@ -99,6 +102,7 @@ A CDC message for a vertex entity can describe an insertion, modification, or de
     "operator": "insert",
     "timestamp": 1701548849757,
     "type": "vertex",
+    "graph": "SocialGraph",
     "typename": "Company",
     "vid": 99999999,
     "uid": "comp1",
@@ -165,6 +169,7 @@ Other changes to all instances of a vertex type are not yet supported by CDC.
     "operator": "delete",
     "timestamp": 1701548854014,
     "type": "vertex-type",
+    "graph": "SocialGraph",
     "typename": "Person",
     "content": {}
 }
@@ -216,6 +221,7 @@ The new format is expected to separate the field names and their values into two
     "operator": "insert",
     "timestamp": 1701569966031,
     "type": "edge",
+    "graph": "SocialGraph",
     "typename": "Creates",
     "hasreverseedge": true,
     "discriminator": "c1:1",
