@@ -6,6 +6,8 @@
 :toc:
 :toclevels:2
 
+TigerGraph Server 4.1.1 was released on November 8, 2024.
+
 TigerGraph Server 4.1.0 preview version was released on August 30, 2024.
 
 //LTS versions are supported for 24 months from their initial release (X.X.0) and should be the choice for production deployments.
@@ -55,6 +57,8 @@ Available for TigerGraph's xref:tigergraph-server:data-loading:manage-data-sourc
 * **xref:tigergraph-server:system-management:change-data-capture/cdc-overview.adoc#_cdc_ha[Change Data Capture (CDC) HA]**:
 CDC continues to function as long as at least one replica per partition is online.
 Previously, Replica 1 needed to remain operational.
+
+* [4.1.1] CDC messages have a "graph" field to specify which graph was affected.
 
 * **Backup HA**:
 Backups remain available even if a node fails.
@@ -110,8 +114,12 @@ Debug more effectively with the newly introduced debugging mode in the operator.
 
 - **https://github.com/tigergraph/ecosys/blob/k8s-operator/1.2.0/k8s/docs/03-deploy/tigergraph-on-eks.md#install-tigergraph-operator[Customization of MaxConcurrentReconciles for the operator]**: +
 Fine tune TigerGraph operator's performance by customizing the maximum number of concurrent reconciles.
-
 ====
+
+* [4.1.1] Added the namespace as a suffix to the HostName in the HostList configuration for TigerGraph on K8s.
+* 4.1.1] Support for customizing the external service port for the TigerGraph and sidecar listeners on K8s.
+* [4.1.1] Pre-upgrade hook in the TigerGraph Operator Helm chart to refresh the CRD automatically during the Operator upgrade.
+
 
 === Language Enhancements
 
@@ -186,10 +194,28 @@ The Health Check Tool in TigerGraph AdminPortal provides administrators with a c
 * **Fine-grained Query Privileges in RBAC**:
 AdminPortal UI for the xref:#finer_grain_query_privileges[fine-grained query privileges] described above.
 
-//== Fixed issues
-//=== Fixed and Improved in 4.1.0
+== Fixed issues
 
-//==== Functionality
+=== Fixed and Improved in 4.1.1
+
+==== Backup
+* Fixed a stall in differential backups if the preceding full backup was created before any data was loaded into the system (CORE-3833).
+
+==== Loading
+* Fixed compile issue for escaped double quote inside string literal of loading job (CORE-3833).
+* Fixed issue where a loading job was stuck and couldn't be cleared if it failed to start (TP-6419).
+* Fixed issue where the file loader enters an infinite loop if the source file contains only a header line (TP-6636).
+
+==== Security
+* Fixed issue where users without any roles and privileges could access other users' information through the "/gsql/v1/users" endpoint (GLE-8477).
+* Fixed issue in file input/output policy where symbolic links in the allow/block list were unexpectedly dereferenced (GLE-7139).
+
+==== Insights
+* Fixed issue where the input widget occasionally resets and loses content (APPS-3095).
+
+==== Kubernetes
+* Fixed inability to run gcollect on a k8s EKS cluster (TP-6291).
+
 
 ////
 * Fixed known issue where the attribute name `memberOf` was case-sensitive. It is now case-insensitive (GLE-6660).
