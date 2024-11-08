@@ -187,20 +187,23 @@ TigerGraph CDC service will *NOT* produce CDC messages for such “implicit edge
 
 A CDC message for an edge entity can describe an insertion, modification, or deletion.
 
-The following example also illustrates updates to List and Map attribute types.
+The following example also illustrates updates to list, map, and tuple attibute types.
 
-[NOTE]
+[IMPORTANT]
 ====
-The CDC format for a map of list values has changed in v4.1.1.
+1. The CDC format for a map  has changed in v4.1.1.
 The previous format was
 [.json]
 ----
-{ "keyA":1, "keyA":2, "keyB":3, "keyB::4] }
+{ "A":1, "B":2, "C":3, "D":5 }
 ----
 The new format is
 [.json]
 ----
-{ "keyA":[1, 2], "keyB":[3, 4] }
+{ "keylist":["A","B","C","D"], "valuelist":[1,2,3,5] }
+
+2. The CDC format for a tuple is deprecated and will change in v4.2.
+The new format is expected to separate the field names and their values into two lists, similar to how maps are now structured as two lists.
 ----
 
 ====
@@ -227,17 +230,26 @@ The new format is
         "uid": "comp2"
     },
     "content": {
-        "attr_list_tuple": {
+        "attr_list": {
             "op": "Add",
             "value": [
-                2, 0, 3, 3, 1222819200, 0, m2
+                2,
+                3,
+                1222819200
             ]
         },
-        "attr_map_tuple": {
+        "attr_map": {
             "op": "Add",
             "value": {
-                "i":[2,0], "f":[3,3], "b":[122281920, 314159]
+                "keylist":["i", "f", "b"],
+                "valuelist": [2, 3 ,122281920]
             }
+        }
+        "attr_tuple": {
+            "op": "Add",
+            "value": [
+                "i: 2, u: 0, f: 3, d: 3, dt: 1222819200, b: 0, s: m2"
+            ]
         }
     }
 }
