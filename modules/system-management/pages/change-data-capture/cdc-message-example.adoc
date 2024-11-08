@@ -89,8 +89,10 @@ It can be one of: `"Overwrite"`, `"Add"`, `"Max"`, `"Min"`, `"And"`, `"Or"`, `"I
 == Message Examples
 === CDC Message with Type: Vertex
 
-.This CDC message example indicates insertion, modification, or deletion of a vertex entity:
-[console]
+A CDC message for a vertex entity can describe an insertion, modification, or deletion.
+
+.Example: Update two attributes of the Company vertex comp1.
+[console, json]
 ----
 {
     "mid": "1|1701548849757|1|0",
@@ -149,8 +151,14 @@ TigerGraph CDC service will *NOT* produce CDC messages for such “implicit edge
 
 === CDC Message with Type: Vertex-Type
 
-.This CDC message example indicates operations on all existing entities of a specific *vertex-type*:
-[console]
+A CDC message for a vertex type corresponds to a change of all instances of the given type.
+This is not a schema change.
+
+NOTE: The only CDC message type supported currently is for deletion operations.
+Other changes to all instances of a vertex type are not yet supported by CDC.
+
+.Example: Delete all instances of the vertex type Person.
+[console, json]
 ----
 {
     "mid": "1|1701548854014|2|0",
@@ -163,7 +171,8 @@ TigerGraph CDC service will *NOT* produce CDC messages for such “implicit edge
 ----
 
 ==== Possible operators for CDC Message with type vertex-type
-.The "operator" can only be "deleted":
+The "operator" can only be "deleted":
+
 [cols="2", separator=¦ ]
 |===
 ¦ “operator”¦ Note
@@ -175,8 +184,29 @@ TigerGraph CDC service will *NOT* produce CDC messages for such “implicit edge
 |===
 
 === CDC Message with Type: Edge
-.This CDC message example indicate insertion, modification, or deletion of a edge entity:
-[console]
+
+A CDC message for an edge entity can describe an insertion, modification, or deletion.
+
+The following example also illustrates updates to List and Map attribute types.
+
+[NOTE]
+====
+The CDC format for a map of list values has changed in v4.1.1.
+The previous format was
+[.json]
+----
+{ "keyA":1, "keyA":2, "keyB":3, "keyB::4] }
+----
+The new format is
+[.json]
+----
+{ "keyA":[1, 2], "keyB":[3, 4] }
+----
+
+====
+
+.Example: Insert an edge betwen Person person2 and Company comp2.
+[console, json]
 ----
 {
     "mid": "1|1701569966031|3|0",
@@ -200,13 +230,13 @@ TigerGraph CDC service will *NOT* produce CDC messages for such “implicit edge
         "attr_list_tuple": {
             "op": "Add",
             "value": [
-                "i: 2, u: 0, f: 3, d: 3, dt: 1222819200, b: 0, s: m2"
+                2, 0, 3, 3, 1222819200, 0, m2
             ]
         },
         "attr_map_tuple": {
             "op": "ReplaceOrAdd",
             "value": {
-                "2011-10-20": "i: 2, u: 0, f: 3, d: 3, dt: 1222819200, b: 0, s: m2"
+                "i":[2,0], "f":[3,3], "b":[122281920, 314159]
             }
         }
     }
