@@ -39,7 +39,7 @@ The current message is the second message in the third batch of the transaction.
 .Other message fields are outlined in the table below:
 [cols="2", separator=¦ ]
 |===
-¦ Field ¦ Value Type: Description or list of allowed values
+¦ Field ¦ Value Type: Description of values
 
 ¦ `type`
 ¦ String: `“vertex”`, `”vertex-type”`, `”edge”`
