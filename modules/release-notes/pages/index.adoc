@@ -202,7 +202,7 @@ AdminPortal UI for the xref:#finer_grain_query_privileges[fine-grained query pri
 * Fixed a stall in differential backups if the preceding full backup was created before any data was loaded into the system (CORE-3833).
 
 ==== Loading
-* Fixed compile issue for escaped double quote inside string literal of loading job (CORE-3833).
+* Fixed compile issue for escaped double quote inside string literal of loading job (GLE-8742).
 * Fixed issue where a loading job was stuck and couldn't be cleared if it failed to start (TP-6419).
 * Fixed issue where the file loader enters an infinite loop if the source file contains only a header line (TP-6636).
 
@@ -216,16 +216,6 @@ AdminPortal UI for the xref:#finer_grain_query_privileges[fine-grained query pri
 ==== Kubernetes
 * Fixed inability to run gcollect on a k8s EKS cluster (TP-6291).
 
-
-////
-* Fixed known issue where the attribute name `memberOf` was case-sensitive. It is now case-insensitive (GLE-6660).
-* Fixed issue of clarity for error message/log when global `schema_change` failed for adding edge but it's relied on vertex does not exist (GLE-6751).
-* Fixed issue where installation was halted due to TigerGraph disks mounted with `noexec` on AppRoot or DataRoot, preventing execution (TP-4929).
-* Fixed issue where there was a delay in loading response times due to syntax detection process in GSQL (GLE-6822).
-* Fixed issue were there was a GPE failure reported during query execution prompting relocation from `/tmp` to `System.TempRoot` (GLE-5536).
-* Fixed issue where incorrect error response occurred when specified graph does not exist (APS-2824).
-* Fixed issue where users encountered error `Vertex expansion failed: c.default.post is not a function` during Explore Neighbors operation in Insight (APS-2840).
-////
 
 //==== Crashes and Deadlocks
 //==== Improvements
