@@ -211,7 +211,6 @@ AdminPortal UI for the xref:#finer_grain_query_privileges[fine-grained query pri
 * Fixed issue where the input widget occasionally resets and loses content (APPS-3095).
 * Fixed inability to run gcollect on a k8s cluster (TP-6291).
 * Fixed Admin Portal log search when there are links to nonexistent logs (APPS-2874).
-* 
 
 ==== Crashes and Deadlocks
 * Fixed a stall in differential backups if the preceding full backup was created before any data was loaded into the system (CORE-3833).
