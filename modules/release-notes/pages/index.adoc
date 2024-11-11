@@ -210,6 +210,8 @@ AdminPortal UI for the xref:#finer_grain_query_privileges[fine-grained query pri
 * Fixed compile issue for escaped double quote inside string literal of loading job (GLE-8742).
 * Fixed issue where the input widget occasionally resets and loses content (APPS-3095).
 * Fixed inability to run gcollect on a k8s cluster (TP-6291).
+* Fixed Admin Portal log search when there are links to nonexistent logs (APPS-2874).
+* 
 
 ==== Crashes and Deadlocks
 * Fixed a stall in differential backups if the preceding full backup was created before any data was loaded into the system (CORE-3833).
@@ -219,6 +221,7 @@ AdminPortal UI for the xref:#finer_grain_query_privileges[fine-grained query pri
 ==== Security
 * Fixed issue where users without any roles and privileges could access other users' information through the "/gsql/v1/users" endpoint (GLE-8477).
 * Fixed issue in file input/output policy where symbolic links in the allow/block list were unexpectedly dereferenced (GLE-7139).
+* Fixed issue where TG Cloud password could be changed without first validating the current password (APP-2829).
 
 //==== Performance
 //==== Improvements
