@@ -325,9 +325,22 @@ For now, TigerGraph CDC Service will *NOT* produce CDC messages for such “impl
 ¦ Delete an edge
 
 ¦`delete-all`
-¦ Delete all edges which satisfy the endpoint and discriminator constraints provided. The source vertex must be provided, but the target vertex and discriminator are optional.
+¦ Delete all edges from the given source vertex.
+Currently, the use of `delete-all` is quite restricted. See note below.
 
 |===
+
+[NOTE]
+.Restrictions for `delete-all`
+====
+A `delete-all` message must satisfy all of the following constraints:
+
+* The edge type being deleted:
+**  must have only one target vertex type
+** may not be a multi-edge type
+** may not have a reverse edge type
+* The CDC messsage may not specify edge type or the target vertex.
+====
 
 ==== Extra CDC message for Edge Update
 Edge updates may include additional information in specific scenarios.
