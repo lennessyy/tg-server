@@ -261,6 +261,24 @@ The new format is expected to separate the field names and their values into two
 }
 ----
 
+.Example: Delete all edges from Person 'John', including multi-edges.
+[console, json]
+----
+{
+    "mid": "1|1701548849757|1|0",
+    "operator": "delete-all",
+    "timestamp": 1701548849757,
+    "type": "edge",
+    "graph": "SocialGraph",
+    "typename": "Transfer",
+    "hasreverseedge": true,
+    "from": {
+        "type": "Person",
+        "vid": 999999999,
+        "uid": "John"
+    }
+}
+----
 ==== Fields for CDC Message with Type: Edge
 [cols="3", separator=¦ ]
 |===
@@ -304,7 +322,11 @@ If source vertex is missing when inserting edge, TigerGraph will implicitly inse
 For now, TigerGraph CDC Service will *NOT* produce CDC messages for such “implicit source vertex insertion”.
 
 ¦`delete`
-¦ Deletion of an edge
+¦ Delete an edge
+
+¦`delete-all`
+¦ Delete all edges which satisfy the endpoint and discriminator constraints provided. The source vertex must be provided, but the target vertex and discriminator are optional.
+
 |===
 
 ==== Extra CDC message for Edge Update
