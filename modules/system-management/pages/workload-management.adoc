@@ -150,7 +150,7 @@ GET /gsqlserver/gsql/workload-manager/configs
 ----
 Dump the queue configs so that the response would be the equivalent of the payload for `POST`.
 The purpose of this API is to retrieve the active configs and modify them on top of it.
-Other than the administrative purposes, one may use `GET WORKLOAD QUEUE` instead.
+Other than the administrative purposes, one may use `SHOW WORKLOAD QUEUE` instead.
 
 ===== Example Request
 [source.warp, bash]
