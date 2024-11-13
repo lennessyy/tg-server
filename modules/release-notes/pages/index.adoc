@@ -237,6 +237,11 @@ AdminPortal UI for the xref:#finer_grain_query_privileges[fine-grained query pri
 |===
 ¦ Description ¦ Found In ¦ Workaround ¦ Fixed In
 
+¦After a cluster expansion, the GPE service may remain in the warmup state.
+¦4.1.1
+a¦If this happens, run `gadmin restart gse -y` to release the GPE.
+¦TBD
+
 ¦When using xref:4.1@tigergraph-server:backup-and-restore:database-import-export.adoc[Import All] if a users schema size in the `.zip` file is exceedingly large, the import may fail with an error messages like this:
 
 `Large catalog file key: /1/ReplicaList.json`
@@ -275,7 +280,7 @@ Such as,
 For example, avoid this scenario, path2 = `"/tmp/more"` and path1= `"/tmp"`.
 ¦ 3.10.1
 
-¦ It has been observed that an issue happens when RESTPP will send a request to all gpes, and if one is down, the request sent to it will `timeout`.
+¦ When RESTPP sends a request to all GPEs, and if one is down, the request sent to it will `timeout`.
 Including the `consistency_check` request will also mark as `timeout`.
 ¦ 3.10.0
 a¦
