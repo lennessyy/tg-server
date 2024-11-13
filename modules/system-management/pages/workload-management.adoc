@@ -99,9 +99,7 @@ Once the configurations change, GPE must be restarted to take effect.
 To modify the whole config:
 [source.warp, bash]
 ----
-curl \
-  -X POST
-  -u tigergraph:tigergraph \
+curl -X POST -u tigergraph:tigergraph \
   <hostname>:<nginx-port>/gsqlserver/gsql/workload-manager/configs \
   -d '{"isEnabled":true,"queues":{"OLTP":{"description":"OLTP queries","isDefault":false,"maxConcurrentQueries":100,"maxDelayQueueSize":200},"scheduled_jobs":{"description":"Scheduled jobs","maxConcurrentQueries":10,"maxDelayQueueSize":20},"AdHoc":{"description":"Ad-hoc queries","isDefault":true,"maxConcurrentQueries":1,"maxDelayQueueSize":2}}}'
 ----
@@ -109,9 +107,7 @@ curl \
 To just toggle the feature flag, simply skip `queues`:
 [source.warp, bash]
 ----
-curl \
-  -X POST
-  -u tigergraph:tigergraph \
+curl -X POST -u tigergraph:tigergraph \
   <hostname>:<nginx-port>/gsqlserver/gsql/workload-manager/configs \
   -d '{"isEnabled":true}'
 ----
@@ -119,9 +115,7 @@ curl \
 To add, delete, or update the `queues` while keeping the feature flag untouched, simply skip `isEnabled`:
 [source.warp, bash]
 ----
-curl \
-  -X POST
-  -u tigergraph:tigergraph \
+curl -X POST -u tigergraph:tigergraph \
   <hostname>:<nginx-port>/gsqlserver/gsql/workload-manager/configs \
   -d '{"queues":{"OLTP":{"description":"OLTP queries","isDefault":false,"maxConcurrentQueries":100,"maxDelayQueueSize":200},"scheduled_jobs":{"description":"Scheduled jobs","maxConcurrentQueries":10,"maxDelayQueueSize":20},"AdHoc":{"description":"Ad-hoc queries","isDefault":true,"maxConcurrentQueries":1,"maxDelayQueueSize":2}}}'
 ----
@@ -161,9 +155,7 @@ Other than the administrative purposes, one may use `SHOW WORKLOAD QUEUE` instea
 ===== Example Request
 [source.warp, bash]
 ----
-curl \
-  -X GET
-  -u tigergraph:tigergraph \
+curl -X GET -u tigergraph:tigergraph \
   <hostname>:<nginx-port>/gsqlserver/gsql/workload-manager/configs
 ----
 
@@ -225,9 +217,7 @@ Note that " * " must be the only entry in the list when available.
 Grant the queue `OLTP` to the user `u1` and `u2`:
 [source.warp, bash]
 ----
-curl \
-  -X GET
-  -u tigergraph:tigergraph \
+curl -X GET -u tigergraph:tigergraph \
   <hostname>:<nginx-port>/gsqlserver/gsql/workload-manager/permission \
   -d '{"action": "grant", "queue": "OLTP", "user": ["u1", "u2"]}'
 ----
@@ -235,9 +225,7 @@ curl \
 Revoke the queue `scheduled_jobs` from all users and the role `r1`:
 [source.warp, bash]
 ----
-curl \
-  -X GET
-  -u tigergraph:tigergraph \
+curl -X GET -u tigergraph:tigergraph \
   <hostname>:<nginx-port>/gsqlserver/gsql/workload-manager/permission \
   -d '{"action": "REVOKE" "queue": "scheduled_jobs", "user": "*", role": ["r1"]}'
 ----
@@ -255,20 +243,20 @@ curl \
 [source.wrap,gsql]
 ----
 # GRANT
-GRANT WORKLOAD QUEUE "OLTP" TO USER u1, u2
-GRANT WORKLOAD QUEUE "OLTP" TO GROUP g1, g2
-GRANT WORKLOAD QUEUE "OLTP" TO ROLE r1, r2
-GRANT WORKLOAD QUEUE "OLTP" TO ALL USERS
-GRANT WORKLOAD QUEUE "OLTP" TO ALL GROUPS
-GRANT WORKLOAD QUEUE "OLTP" TO ALL ROLES
+GRANT WORKLOAD QUEUE OLTP TO USER u1, u2
+GRANT WORKLOAD QUEUE OLTP TO GROUP g1, g2
+GRANT WORKLOAD QUEUE OLTP TO ROLE r1, r2
+GRANT WORKLOAD QUEUE OLTP TO ALL USERS
+GRANT WORKLOAD QUEUE OLTP TO ALL GROUPS
+GRANT WORKLOAD QUEUE OLTP TO ALL ROLES
 
 # REVOKE
-REVOKE WORKLOAD QUEUE "OLTP" FROM USER u1, u2
-REVOKE WORKLOAD QUEUE "OLTP" FROM GROUP g1, g2
-REVOKE WORKLOAD QUEUE "OLTP" FROM ROLE r1, r2
-REVOKE WORKLOAD QUEUE "OLTP" FROM ALL USERS
-REVOKE WORKLOAD QUEUE "OLTP" FROM ALL GROUPS
-REVOKE WORKLOAD QUEUE "OLTP" FROM ALL ROLES
+REVOKE WORKLOAD QUEUE OLTP FROM USER u1, u2
+REVOKE WORKLOAD QUEUE OLTP FROM GROUP g1, g2
+REVOKE WORKLOAD QUEUE OLTP FROM ROLE r1, r2
+REVOKE WORKLOAD QUEUE OLTP FROM ALL USERS
+REVOKE WORKLOAD QUEUE OLTP FROM ALL GROUPS
+REVOKE WORKLOAD QUEUE OLTP FROM ALL ROLES
 ----
 
 NOTE: Unlike REST API, the GSQL commands don't allow you to specify USER, GROUP, and ROLE in a command.
@@ -295,9 +283,7 @@ If not specified, all queues will be shown.
 To retrieve the permission info of the queue `OLTP`:
 [source.warp, bash]
 ----
-curl \
-  -X GET
-  -u tigergraph:tigergraph \
+curl -X GET -u tigergraph:tigergraph \
   localhost:14240/gsql/v1/workload-manager/permission?id=OLTP
 ----
 
@@ -352,9 +338,7 @@ List all granted workload queues to the current user so the user can choose the 
 ===== Example Request
 [source.warp, bash]
 ----
-curl \
-  -X GET
-  -u tigergraph:tigergraph \
+curl -X GET -u tigergraph:tigergraph \
   <hostname>:<nginx-port>/restpp/workload-manager/queue
 ----
 
@@ -432,10 +416,8 @@ RUN QUERY -queue AdHoc q1()
 ----
 or you can use the HTTP header `Workload-Queue`:
 ----
-curl \
-  -X POST \
-  -u tigergraph:tigergraph \
-  -H "Workload-Queue: AdHoc"
+curl -X POST -u tigergraph:tigergraph \
+  -H "Workload-Queue: AdHoc" \
   <hostname>:14240/restpp/query/ldbc_snb/q1"
 ----
 
@@ -471,9 +453,7 @@ If Request Body is not provided, response is generated as if both fields are usi
 ===== Example Request
 [source.warp, bash]
 ----
-curl \
-  -X POST
-  -u tigergraph:tigergraph \
+curl -X POST -u tigergraph:tigergraph \
   <hostname>:<nginx-port>/restpp/workload-manager/queuestatus \
    -d '{"queuelist": ["AdHoc"], "mode": "verbose"}'
 ----

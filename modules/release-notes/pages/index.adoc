@@ -6,13 +6,17 @@
 :toc:
 :toclevels:2
 
+TigerGraph Server 4.1.1 was released on November 12, 2024.
+
 TigerGraph Server 4.1.0 preview version was released on August 30, 2024.
 
 //LTS versions are supported for 24 months from their initial release (X.X.0) and should be the choice for production deployments.
 
-== Key New Features
-
-//text to comment out
+[NOTE]
+====
+TigerGraph 4's feature set is an enhancement of what was available in 3.10.1.
+Therefore, features that were in 3.10.1 are not considered New Features.
+====
 
 == Detailed List of New and Modified Features
 
@@ -46,6 +50,9 @@ Administrators can specify rules for the complexity of passwords and how long or
 * **xref:4.1@tigergraph-server:troubleshooting:audit-log.adoc[Expanded Audit Log Coverage]**:
 Audit logs now include `gadmin` activity, for more complete audit coverage.
 
+* [4.1.1] **xref:4.1@tigergraph-server:troubleshooting:audit-log.adoc#_gsql_service_audit_logs[More detailed information in audit logs]**. Also, an authorized admin user can configure the audit logs to include PII.
+
+
 === High Availability (HA) Enhancements
 
 * **xref:4.1@tigergraph-server:data-loading:data-loading-v2.adoc[Data Loading HA (Beta)]**:
@@ -55,6 +62,10 @@ Available for TigerGraph's xref:4.1@tigergraph-server:data-loading:manage-data-s
 * **xref:4.1@tigergraph-server:system-management:change-data-capture/cdc-overview.adoc#_cdc_ha[Change Data Capture (CDC) HA]**:
 CDC continues to function as long as at least one replica per partition is online.
 Previously, Replica 1 needed to remain operational.
+
+* [4.1.1] **xref:system-management:change-data-capture/cdc-message-example.adoc#_other_message_fields[CDC messages have a "graph" field]** to specify which graph was affected.
+
+* [4.1.1] **xref:cluster-and-ha-management:crr-index.adoc[Cross-Region Replication]** now includes loading jobs.
 
 * **Backup HA**:
 Backups remain available even if a node fails.
@@ -110,8 +121,12 @@ Debug more effectively with the newly introduced debugging mode in the operator.
 
 - **https://github.com/tigergraph/ecosys/blob/k8s-operator/1.2.0/k8s/docs/03-deploy/tigergraph-on-eks.md#install-tigergraph-operator[Customization of MaxConcurrentReconciles for the operator]**: +
 Fine tune TigerGraph operator's performance by customizing the maximum number of concurrent reconciles.
-
 ====
+
+* [4.1.1] Added the namespace as a suffix to the HostName in the HostList configuration for TigerGraph on K8s.
+* [4.1.1] Support for customizing the external service port for the TigerGraph and sidecar listeners on K8s.
+* [4.1.1] Pre-upgrade hook in the TigerGraph Operator Helm chart to refresh the CRD automatically during the Operator upgrade.
+
 
 === Language Enhancements
 
@@ -131,6 +146,8 @@ Fine tune TigerGraph operator's performance by customizing the maximum number of
 Introduces a more complete and standard set of REST APIs:
 - provides coverage for database commands previously only available as xref:4.1@tigergraph-server:API:gsql-endpoints.adoc[GSQL commands].
 - allows developers and AI to more easily control and use TigerGraph programmatically.
+
+* [4.1.1] Added token function **xref:4.1@gsql-ref:ddl-and-loading:creating-a-loading-job.adoc#_token_functions[get_current_datatime()]** for loading jobs.
 
 ////
 * **xref:4.1@gsql-ref:querying:accumulators.adoc#_edge_attached_accumulators[Edge Accumulators in Multi-hop Queries]**
@@ -186,25 +203,33 @@ The Health Check Tool in TigerGraph AdminPortal provides administrators with a c
 * **Fine-grained Query Privileges in RBAC**:
 AdminPortal UI for the xref:#finer_grain_query_privileges[fine-grained query privileges] described above.
 
-//== Fixed issues
-//=== Fixed and Improved in 4.1.0
+== Fixed issues
 
-//==== Functionality
+=== Fixed and Improved in 4.1.1
 
-////
-* Fixed known issue where the attribute name `memberOf` was case-sensitive. It is now case-insensitive (GLE-6660).
-* Fixed issue of clarity for error message/log when global `schema_change` failed for adding edge but it's relied on vertex does not exist (GLE-6751).
-* Fixed issue where installation was halted due to TigerGraph disks mounted with `noexec` on AppRoot or DataRoot, preventing execution (TP-4929).
-* Fixed issue where there was a delay in loading response times due to syntax detection process in GSQL (GLE-6822).
-* Fixed issue were there was a GPE failure reported during query execution prompting relocation from `/tmp` to `System.TempRoot` (GLE-5536).
-* Fixed issue where incorrect error response occurred when specified graph does not exist (APS-2824).
-* Fixed issue where users encountered error `Vertex expansion failed: c.default.post is not a function` during Explore Neighbors operation in Insight (APS-2840).
-////
+==== Functionality
+* Fixed issue where local accumulators defined across multiple lines in a query were misinterpreted in the GSQL client (GLE-7833).
+* Fixed compile issue for escaped double quote inside string literal of loading job (GLE-8742).
+* Fixed issue where the input widget occasionally resets and loses content (APPS-3095).
+* Fixed inability to run gcollect on a k8s cluster (TP-6291).
+* Fixed Admin Portal log search when there are links to nonexistent logs (APPS-2874).
 
-//==== Crashes and Deadlocks
-//==== Improvements
-//==== Security
+==== Crashes and Deadlocks
+* Fixed a stall in differential backups if the preceding full backup was created before any data was loaded into the system (CORE-3833).
+* Fixed issue where a loading job was stuck and couldn't be cleared if it failed to start (TP-6419).
+* Fixed issue where the file loader enters an infinite loop if the source file contains only a header line (TP-6636).
+
+==== Security
+* Fixed issue where users without any roles and privileges could access other users' information through the "/gsql/v1/users" endpoint (GLE-8477).
+* Fixed issue in file input/output policy where symbolic links in the allow/block list were unexpectedly dereferenced (GLE-7139).
+* Fixed issue where TG Cloud password could be changed without first validating the current password (APP-2829).
+
 //==== Performance
+//==== Improvements
+//==== Backup
+//==== Loading
+//==== Insights
+//==== Kubernetes
 
 == Known Issues and Limitations
 
@@ -212,7 +237,12 @@ AdminPortal UI for the xref:#finer_grain_query_privileges[fine-grained query pri
 |===
 ¦ Description ¦ Found In ¦ Workaround ¦ Fixed In
 
-¦When using xref:{page-component-version}@tigergraph-server:backup-and-restore:database-import-export.adoc[Import All] if a users schema size in the `.zip` file is exceedingly large, the import may fail with an error messages like this:
+¦After a cluster expansion, the GPE service may remain in the warmup state.
+¦4.1.1
+a¦If this happens, run `gadmin restart gse -y` to release the GPE.
+¦TBD
+
+¦When using xref:{page-component-version}@tigergraph-server:backup-and-restore:database-import-export.adoc[Import All] if the schema size in the `.zip` file is exceedingly large, the import may fail with an error messages like this:
 
 `Large catalog file key: /1/ReplicaList.json`
 
@@ -250,7 +280,7 @@ Such as,
 For example, avoid this scenario, path2 = `"/tmp/more"` and path1= `"/tmp"`.
 ¦ 3.10.1
 
-¦ It has been observed that an issue happens when RESTPP will send a request to all gpes, and if one is down, the request sent to it will `timeout`.
+¦ When RESTPP sends a request to all GPEs, and if one is down, the request sent to it will `timeout`.
 Including the `consistency_check` request will also mark as `timeout`.
 ¦ 3.10.0
 a¦
@@ -417,6 +447,9 @@ Then the global loading process will exit and fail the local job after timeout w
 |===
 ¦ Description ¦ Version Introduced
 
+¦In xref:{page-component-version}@tigergraph-server:system-management:change-data-capture/cdc-message-example.adoc#_message_examples[CDC messages], the format of map values has changed.
+¦v4.1.1
+
 ¦A full export package now includes access policies and template queries.
 ¦v4.1.0
 
@@ -456,18 +489,15 @@ a¦ Some user-defined functions (UDFs) may no longer be accepted due to xref:{pa
 |===
 ¦ Description ¦ Deprecated ¦ Removed
 
+¦ The format for tuple structures in CDC messages will change in a future veresion. The future format is likely to be similar to the
+xref:4.1@system-management:change-data-capture/cdc-message-example.adoc#_cdc_message_with_type_edge[new format for maps].
+¦ 4.1.1
+¦ TBD (possibly 4.2)
+
 ¦ The use of plaintext tokens in xref:{page-component-version}@tigergraph-server:API:authentication.adoc[authentication] is deprecated.
 Use xref:{page-component-version}@tigergraph-server:user-access:jwt-token.adoc[] instead.
 ¦ 3.10.0
 ¦ TBD
-
-
-¦ The command `gbar` is removed and is no longer available.
-However, if you are using a version of TigerGraph before 3.10.0 you can still use `gbar` to xref:{page-component-version}@tigergraph-server:backup-and-restore:gbar-legacy.adoc[create a backup with gbar] of the primary cluster.
-See also xref:{page-component-version}@tigergraph-server:backup-and-restore:gbar-legacy.adoc[Backup and Restore with gbar] on how to create a backup.
-
-¦ 3.7
-¦ 3.10.0
 
 ¦ *Vertex-level Access Control* (VLAC) and VLAC Methods are removed and are no longer available.
 ¦ 3.10.0
