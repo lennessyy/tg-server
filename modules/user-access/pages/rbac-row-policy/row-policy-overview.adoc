@@ -46,3 +46,4 @@ Here you can find the row policy EBNF examples for reference.
 ** REST API `POST /graph/{graph_name}` xref:API:upsert-rest.adoc[]
 ** Loading job: (file loading and kafka loading) loading an existing vertex with new attribute value.
 ** REST API `POST /ddl`: (for spark loading job) loading an existing vertex with new attribute value. xref:API:built-in-endpoints.adoc#_run_a_loading_job[]
+

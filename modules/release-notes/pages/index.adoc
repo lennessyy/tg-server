@@ -242,7 +242,7 @@ AdminPortal UI for the xref:#finer_grain_query_privileges[fine-grained query pri
 a¦If this happens, run `gadmin restart gse -y` to release the GPE.
 ¦TBD
 
-¦When using xref:4.1@tigergraph-server:backup-and-restore:database-import-export.adoc[Import All] if a users schema size in the `.zip` file is exceedingly large, the import may fail with an error messages like this:
+¦When using xref:{page-component-version}@tigergraph-server:backup-and-restore:database-import-export.adoc[Import All] if the schema size in the `.zip` file is exceedingly large, the import may fail with an error messages like this:
 
 `Large catalog file key: /1/ReplicaList.json`
 
@@ -498,7 +498,6 @@ xref:4.1@system-management:change-data-capture/cdc-message-example.adoc#_cdc_mes
 Use xref:{page-component-version}@tigergraph-server:user-access:jwt-token.adoc[] instead.
 ¦ 3.10.0
 ¦ TBD
-
 
 ¦ *Vertex-level Access Control* (VLAC) and VLAC Methods are removed and are no longer available.
 ¦ 3.10.0
