@@ -1450,4 +1450,13 @@ a|
 * The default value is 0. When the value is 0, the threshold is dynamically decided by TigerGraph, based on current memory usage statistics.
 | `TransactionSizeLimit=1073741824`
 
+|GSE
+| `ServFromDisk`,
+GSE.BasicConfig.Env
+a|
+* When set to `1`, vertex ID data remains on disk rather than being loaded into memory. This will help reduce the GSE startup time significantly, with the trade-off of slight slower performance for data loading and query processing.  Default = `0`: vertex ID is loaded into memory.
+* GSE will perform a one-time DB format conversion during the first startup after turning this flag on. The conversion time depends on the number of vertices. After the conversion, GSE must then be restarted for the conversion to take effect.
+NOTE: The built-in endpoints xref:API:built-in-endpoints.adoc#_deleted_vertex_check[`/deleted_vertex_check`] and xref:API:built-in-endpoints.adoc#_data_consistency_check[`/data_consistency_check`] are not supported when ServFromDisk = 1, as they require the full scan which can take significant time.
+| `ServFromDisk=1`
+
 |===
