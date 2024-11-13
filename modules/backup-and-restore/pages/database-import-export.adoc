@@ -8,6 +8,10 @@ This data can be subsequently imported in order to recreate the same database, i
 
 To see how to Export/Import selected individual graphs in a database refer to xref:tigergraph-server:backup-and-restore:single-graph-import-export.adoc[].
 
+[NOTE]
+====
+Beginning with version 4.1, a full export package now includes access policies and template queries.
+====
 
 [IMPORTANT]
 ====
@@ -159,8 +163,9 @@ The security features prevent users from directly unzipping it.
 For each vertex or edge type called `<type>`, there is one of the following two data files:
 ** `vertex_<type>.csv`
 ** `edge_<type>.csv`
-* `global.gsql` - DDL job to create all global vertex and edge types, and data sources.
+* `global.gsql` - DDL job to create all global vertex and edge types, data sources, packages, template queries and functions.
 * `tuple.gsql` - DDL job to create all User Defined Tuples.
+* `policies.gsql` - DDL job to create policies.
 * Exported data and jobs used to restore the data:
 ** `GlobalTypes/` - folder containing data for global vertex/edge types
 *** `vertex_name.csv`

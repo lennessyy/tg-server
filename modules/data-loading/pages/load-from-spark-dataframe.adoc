@@ -1,9 +1,9 @@
 = Load from Spark Dataframe
 
-The TigerGraph Spark Connector is used with
-https://spark.apache.org[Apache Spark] to read data from a Spark DataFrame (or Data Lake) and write to TigerGraph.
+The TigerGraph Spark Connector employs
+https://spark.apache.org[Apache Spark] to read data from a Spark DataFrame (or Data Lake) and write to TigerGraph. This connector has multiple optimizations for high performance, scalability, and management.
 
-As of TigerGraph 4.1, it can also be used from Spark to run a TigerGraph query and xref:data-loading:read-to-spark-dataframe.adoc[streaming data into Spark] as a Dataframe.
+In TigerGraph 3.11+, it can also be used to xref:data-loading:read-to-spark-dataframe.adoc[to stream data from TigerGraph into Spark] as a Dataframe.
 
 Users can leverage it to connect TigerGraph to the Spark ecosystem and load data from any Spark data sources, e.g.:
 
@@ -19,35 +19,37 @@ xref:tigergraph-server:data-loading:load-from-spark-dataframe.adoc#_load_data_fr
 xref:tigergraph-server:data-loading:load-from-spark-dataframe.adoc#_load_data_from_iceberg[Iceberg]
 and xref:tigergraph-server:data-loading:load-from-spark-dataframe.adoc#_load_data_from_hudi[Hudi]
 
-This connector has multiple optimizations and is backward compatible with TigerGraph v3.6.0+.
-
-* Job level loading statistics is available in v3.10+.
-* Support for reading data into Spark from TigerGraph is available in v4.1+.
-
 include::partial$spark/jdbc-deprecation.adoc[]
 
-== Prerequisite
+== Prerequisites
 
-include::partial$spark/prerequisite.adoc[]
+include::partial$spark/prerequisites.adoc[]
 
 === Create a Loading Job
-[source, gsql]
-----
 
-CREATE VERTEX Comment (PRIMARY_ID id UINT, creationDate DATETIME, locationIP STRING, browserUsed STRING, content STRING, length UINT) WITH primary_id_as_attribute="TRUE", STATS="outdegree_by_edgetype"
+This loading map should map the dataframe's columns to the desired graph element attributes.
+
+[source, gsql]
+.Example of simple graph schema and loading job
+----
+CREATE VERTEX Comment (PRIMARY_ID id UINT, creationDate DATETIME,
+  locationIP STRING, browserUsed STRING, content STRING, length UINT)
+  WITH primary_id_as_attribute="TRUE", STATS="outdegree_by_edgetype"
 CREATE GRAPH demo_graph (*)
 
 USE GRAPH demo_graph
 CREATE LOADING JOB load_Comment FOR GRAPH demo_graph {
     DEFINE FILENAME file_Comment;
     LOAD file_Comment
-        TO VERTEX Comment VALUES ($1, $0, $2, $3, $4, $5) USING header="true", separator="|";
+        TO VERTEX Comment VALUES ($1, $0, $2, $3, $4, $5)
+        USING header="true", separator="|";
 }
 ----
 
 == Overview
-TigerGraph Spark loading is leveraging xref:tigergraph-server:API:built-in-endpoints.adoc#_run_a_loading_job[loading job built-in endpoint].
-It requires a pre-defined loading job, then the dataframe will be processed as follows:
+
+The first step is the read data into a Spark dataframe.
+Then, using a TigerGraph loading job whieh maps data fields from the dataframe into graph elements, the connector pulls data from Spark into TigerGraph.
 
 .Spark dataframe:
 [console]
@@ -63,12 +65,14 @@ It requires a pre-defined loading job, then the dataframe will be processed as f
 +--------------------+-------------+-------------+-----------+--------------------+------+
 ----
 
-.The connector concatenates columns to delimited data:
-
+.The connector concatenates columns to delimited data.
+If the following options are used,
+----
 - loading.separator = "|"
 - loading.eol = "\n"
+----
 
-the processed data would be:
+then the processed data would be
 [console]
 ----
 2012-07-04T06:10:43.489+00:00|7696585588755|46.23.82.182|Firefox|LOL|3
@@ -78,19 +82,17 @@ the processed data would be:
 2012-11-11T08:59:21.311+00:00|9345853030710|166.75.225.76|Chrome|good|4
 ----
 
-.The processed data will be sent to TigerGraph like CSV files to run the loading job:
+The processed data will be sent to TigerGraph in batches as CSV file sources for the loading job:
+----
 - loading.job = "load_Comment"
 - loading.filename = "file_Comment"
+----
 
-To let TigerGraph parse the data correctly, please make sure you are setting `loading.separator` and `loading.eol` to an unique character.
+To let TigerGraph parse the data correctly, please make sure you set  `loading.separator` and `loading.eol` to chracters which do not appear in your data fields.
 
 == Usage
-include::partial$spark/pre_def_options.adoc[]
+include::partial$spark/pre-def-options.adoc[]
 
-[NOTE]
-====
-Authenticate with the username/password or secret to support token refresh, otherwise, make sure the lifetime of the token is long enough for the loading job.
-====
 
 === Batch Write
 
@@ -110,6 +112,8 @@ df.write
     .option("loading.job", "load_Comment")
     .option("loading.filename", "file_Comment")
     .option("loading.separator", "|")
+    .option("log.level", "2")
+    .option("log.file", "/tmp/tigergraph-spark-connector.log")
     .save()
 ----
 
@@ -136,6 +140,8 @@ df.writeStream
     .option("loading.job", "load_Comment")
     .option("loading.filename", "file_Comment")
     .option("loading.separator", "|")
+    .option("log.level", "2")
+    .option("log.file", "/tmp/tigergraph-spark-connector.log")
     .start()
     .awaitTermination()
 ----
@@ -237,6 +243,8 @@ df.write
     .option("loading.job", "load_Comment")
     .option("loading.filename", "file_Comment")
     .option("loading.separator", "|")
+    .option("log.level", "2")
+    .option("log.file", "/tmp/tigergraph-spark-connector.log")
     .save()
 ----
 
@@ -274,6 +282,8 @@ df.writeStream
     .option("loading.filename", "file_Comment")
     .option("loading.separator", "|")
     .start()
+    .option("log.level", "2")
+    .option("log.file", "/tmp/tigergraph-spark-connector.log")
     .awaitTermination()
 ----
 
@@ -306,6 +316,8 @@ df.write
     .option("loading.job", "load_Comment")
     .option("loading.filename", "file_Comment")
     .option("loading.separator", "|")
+    .option("log.level", "2")
+    .option("log.file", "/tmp/tigergraph-spark-connector.log")
     .save()
 ----
 
@@ -339,6 +351,8 @@ df.writeStream
     .option("loading.job", "load_Comment")
     .option("loading.filename", "file_Comment")
     .option("loading.separator", "|")
+    .option("log.level", "2")
+    .option("log.file", "/tmp/tigergraph-spark-connector.log")
     .start()
     .awaitTermination()
 ----
@@ -374,6 +388,8 @@ df.write
     .option("loading.job", "load_Comment")
     .option("loading.filename", "file_Comment")
     .option("loading.separator", "|")
+    .option("log.level", "2")
+    .option("log.file", "/tmp/tigergraph-spark-connector.log")
     .save()
 ----
 
@@ -406,20 +422,22 @@ df.writeStream
     .option("loading.job", "load_Comment")
     .option("loading.filename", "file_Comment")
     .option("loading.separator", "|")
+    .option("log.level", "2")
+    .option("log.file", "/tmp/tigergraph-spark-connector.log")
     .start()
     .awaitTermination()
 ----
 
 For more details on Hudi see https://hudi.apache.org/docs/quick-start-guide/[Spark Guide | Apache Hudi].
 
-=== Loading Statistics
-When you configure the logging properly and set log level to info, the loading statistics will be logged.
+== Loading Statistics
+When you configure the logging properly and set log level to `info`, the loading statistics will be logged.
 
 There are 3 levels of stats:
 
-* *Batch level*: data will be loaded to TigerGraph by micro batches, malformed or invalid data count of the batch will be logged.
-* *Partition level*: the data source can contain multiple partitions, and the log will show how many rows of the partition has been sent to TigerGraph.
-* *Job Level (only available for TigerGraph 3.10.0 or higher)*: The overall loading statistics of the Spark job aggregated by TigerGraph service KAFKASTRM-LL. It requires providing username and password to query /gsqlserver endpoint.
+* *Batch level*: Data will be loaded to TigerGraph in micro batches. The count of malformed or invalid data of each batch will be logged.
+* *Partition level*: The data source can contain multiple partitions, and the log will show how many rows of a partition has been sent to TigerGraph.
+* *Job Level (only available for TigerGraph 3.10+)*: The overall loading statistics of the Spark job aggregated by TigerGraph service KAFKASTRM-LL. This requires providing username and password to query `/gsqlserver` endpoint.
 
 .Sample loading statistics:
 [source, scala]
@@ -461,8 +479,6 @@ There are 3 levels of stats:
     } ]
 } ]
 ----
-
-== Level Statistic Reference
 
 === Row Level Statistics
 [separator=¦ ]

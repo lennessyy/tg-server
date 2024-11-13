@@ -183,12 +183,12 @@ For testing purposes, users can generate a public key using a public tool such a
 Ensure that the public key configured and the public key in the JWT Token match.
 ====
 
-==== Scope of Access
+=== Scope of Access
 Access tokens *without* the `graph` claim are global tokens and inherit all permissions of the user on any graph.
 
 Tokens *with* the `graph` claim only inherit permissions for the specified graph assigned to the user.
 
-==== Apply Configuration Changes
+=== Apply Configuration Changes
 When using `gadmin config` to change any parameters, you need to run `gadmin config apply -y` for it to take effect.
 You can change multiple parameters and then run `gadmin config apply` for all of them together.
 
@@ -199,7 +199,7 @@ gadmin config apply -y
 gadmin restart restpp -y
 ----
 
-==== Enable RESTPP Authentication
+=== Enable RESTPP Authentication
 
 .Enable RESTPP Authentication with this command:
 [console]

@@ -192,7 +192,6 @@ User: "tigergraph"
     EXPORT_GRAPH
     CLEAR_GRAPHSTORE
     DROP_ALL
-    ACCESS_TAG
 ----
 
 [#_grant_a_role_to_a_user]
@@ -291,8 +290,8 @@ GSQL > GRANT WRITE ON ALL ROLES
 
 This command will allow `user1` and `user2` to modify roles on the graph `example_graph`.
 Specifically, they can create, modify, or delete roles for that graph.
-To see a full list of privileges and the command they allow users to run, see 
-xref:rbac-row-policy/rbac-row-policy.adoc#_object_based_privileges[]
+To see a full list of privilege objects and the types of privileges they each may have, see
+xref:rbac-row-policy/row-policy-privileges-table.adoc[]
 
 == Grant type-level privilege to a user
 You can grant certain privileges (`READ_DATA`, `CREATE_DATA`, `DELETE_DATA`, `UPDATE_DATA`) on a type level to users.
