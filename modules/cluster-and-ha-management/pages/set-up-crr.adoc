@@ -8,11 +8,6 @@ Changes on the primary cluster are copied over to the DR cluster.
 
 When necessary, you can fail over to a DR cluster, making it the new primary cluster.
 
-[NOTE]
-====
-This setup assumes that you are setting up a DR cluster for an existing primary cluster.
-If you are setting up both the primary cluster and DR cluster from scratch, you only need perform Step 3 after TigerGraph is installed on both clusters.
-====
 
 == Before you begin
 
@@ -103,7 +98,7 @@ Specifically, when switching between PR and DR, before the switch, it is necessa
 
 [NOTE]
 ====
-In previous versions users had to set `System.CrossRegionReplication.Enabled` to `true`, but this is no longer permitted.
+Starting from version 3.10, setting System.CrossRegionReplication.Enabled to true is no longer permitted.
 
 .However, setting it to `false` is still permissible.
 [source,console]
