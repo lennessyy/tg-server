@@ -59,7 +59,8 @@ or xref:data-streaming-connector/kafka.adoc[].
 This diagram shows the supported data sources, which connector to use, and which TigerGraph component manages the data loading.
 
 .TigerGraph Data Loading Options
-image::data-loading:loading_arch_3.9.3.png[Architectural diagram showing supported data sources, which connector to use, and which TigerGraph component manages the data loading]
+image::data-loading:loading_arch_3.11.png[Architectural diagram showing supported data sources, which connector to use, and which TigerGraph component manages the data loading]
+//  source file: https://graphsql.atlassian.net/wiki/..../Data+Loading+Architecture+with+New+Spark+Connector
 
 == Loading Jobs
 A loading job tells the database how to construct vertices and edges from data sources.
