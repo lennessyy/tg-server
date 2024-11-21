@@ -23,7 +23,7 @@ You can toggle the workload queue feature on and off, and add, update, or delete
 ==== Put Workload Queue
 [source.wrap]
 ----
-POST /gsqlserver/gsql/workload-manager/configs
+POST /gsql/v1/workload-manager/configs
 ----
 Upload the workload queue configs.
 
@@ -100,7 +100,7 @@ To modify the whole config:
 [source.warp, bash]
 ----
 curl -X POST -u tigergraph:tigergraph \
-  <hostname>:<nginx-port>/gsqlserver/gsql/workload-manager/configs \
+  <hostname>:<nginx-port>/gsql/v1/workload-manager/configs \
   -d '{"isEnabled":true,"queues":{"OLTP":{"description":"OLTP queries","isDefault":false,"maxConcurrentQueries":100,"maxDelayQueueSize":200},"scheduled_jobs":{"description":"Scheduled jobs","maxConcurrentQueries":10,"maxDelayQueueSize":20},"AdHoc":{"description":"Ad-hoc queries","isDefault":true,"maxConcurrentQueries":1,"maxDelayQueueSize":2}}}'
 ----
 
@@ -108,7 +108,7 @@ To just toggle the feature flag, simply skip `queues`:
 [source.warp, bash]
 ----
 curl -X POST -u tigergraph:tigergraph \
-  <hostname>:<nginx-port>/gsqlserver/gsql/workload-manager/configs \
+  <hostname>:<nginx-port>/gsql/v1/workload-manager/configs \
   -d '{"isEnabled":true}'
 ----
 
@@ -116,7 +116,7 @@ To add, delete, or update the `queues` while keeping the feature flag untouched,
 [source.warp, bash]
 ----
 curl -X POST -u tigergraph:tigergraph \
-  <hostname>:<nginx-port>/gsqlserver/gsql/workload-manager/configs \
+  <hostname>:<nginx-port>/gsql/v1/workload-manager/configs \
   -d '{"queues":{"OLTP":{"description":"OLTP queries","isDefault":false,"maxConcurrentQueries":100,"maxDelayQueueSize":200},"scheduled_jobs":{"description":"Scheduled jobs","maxConcurrentQueries":10,"maxDelayQueueSize":20},"AdHoc":{"description":"Ad-hoc queries","isDefault":true,"maxConcurrentQueries":1,"maxDelayQueueSize":2}}}'
 ----
 
@@ -146,7 +146,7 @@ PUT WORKLOAD QUEUE FROM "{\"queues\":{\"OLTP\":{\"description\":\"OLTP queries\"
 
 [source.wrap]
 ----
-GET /gsqlserver/gsql/workload-manager/configs
+GET /gsql/v1/workload-manager/configs
 ----
 Dump the queue configs so that the response would be the equivalent of the payload for `POST`.
 The purpose of this API is to retrieve the active configs and modify them on top of it.
@@ -156,7 +156,7 @@ Other than the administrative purposes, one may use `SHOW WORKLOAD QUEUE` instea
 [source.warp, bash]
 ----
 curl -X GET -u tigergraph:tigergraph \
-  <hostname>:<nginx-port>/gsqlserver/gsql/workload-manager/configs
+  <hostname>:<nginx-port>/gsql/v1/workload-manager/configs
 ----
 
 ===== Response Status Codes
@@ -180,7 +180,7 @@ You can grant or revoke workload queues to a user based on its user name, groups
 
 [source.wrap]
 ----
-POST /gsqlserver/gsql/workload-manager/permission
+POST /gsql/v1/workload-manager/permission
 ----
 Grant a workload queue to users, groups, and/or roles.
 
@@ -218,7 +218,7 @@ Grant the queue `OLTP` to the user `u1` and `u2`:
 [source.warp, bash]
 ----
 curl -X GET -u tigergraph:tigergraph \
-  <hostname>:<nginx-port>/gsqlserver/gsql/workload-manager/permission \
+  <hostname>:<nginx-port>/gsql/v1/workload-manager/permission \
   -d '{"action": "grant", "queue": "OLTP", "user": ["u1", "u2"]}'
 ----
 
@@ -226,7 +226,7 @@ Revoke the queue `scheduled_jobs` from all users and the role `r1`:
 [source.warp, bash]
 ----
 curl -X GET -u tigergraph:tigergraph \
-  <hostname>:<nginx-port>/gsqlserver/gsql/workload-manager/permission \
+  <hostname>:<nginx-port>/gsql/v1/workload-manager/permission \
   -d '{"action": "REVOKE" "queue": "scheduled_jobs", "user": "*", role": ["r1"]}'
 ----
 
@@ -265,7 +265,7 @@ You must use separate commands for each entity type.
 ==== Show Workload Queue
 
 ----
-GET gsqlserver/gsql/workload-manager/permission
+GET gsql/v1/workload-manager/permission
 ----
 Show info on a specific workload queue or all.
 
