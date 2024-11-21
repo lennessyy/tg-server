@@ -305,7 +305,7 @@ The following table details the built-in roles and their corresponding set of pr
 
 | `globalobserver`
 | Global
-| `READ_SCHEMA`, `READ_LOADINGJOB` on global scope
+| `READ_SCHEMA`, `READ_LOADINGJOB` on the global scope
 
 | `globaldesigner`
 | Global
