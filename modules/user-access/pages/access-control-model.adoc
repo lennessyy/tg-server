@@ -303,6 +303,10 @@ The following table details the built-in roles and their corresponding set of pr
 `WRITE_POLICY`,
 `OWNERSHIP` on ALL QUERIES
 
+| `globalobserver`
+| Global
+| `READ_SCHEMA`, `READ_LOADINGJOB` at the global scope
+
 | `globaldesigner`
 | Global
 | Designer's privileges on the global scope, `DROP_GRAPH` for graphs created by the same user
