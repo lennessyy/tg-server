@@ -52,7 +52,7 @@ Audit logs now include `gadmin` activity, for more complete audit coverage.
 
 * [4.1.1] **xref:4.1@tigergraph-server:troubleshooting:audit-log.adoc#_gsql_service_audit_logs[More detailed information in audit logs]**. Also, an authorized admin user can configure the audit logs to include PII.
 
-* **xref:4.1@tigergraph-server:user-access:role-management.adoc#_built_in_roles[New Built-in Role]**: globalobserver
+* **xref:4.1@tigergraph-server:user-access:access-control-model.adoc#_built_in_roles[New Built-in Role]**: globalobserver
 - The globalobserver role introduces read-only access for schemas and loading jobs on the global scope
 
 === High Availability (HA) Enhancements
