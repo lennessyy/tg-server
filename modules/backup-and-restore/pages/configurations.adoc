@@ -214,7 +214,7 @@ gadmin config set "System.Backup.ABS.AccountKey" "<account-key>"
 gadmin config apply -y
 ----
 
-== Backup to GCS (google cloud storage)
+== Backup to GCS (Google Cloud Storage)
 Similar to backing up to ABS, prepare the proper https://cloud.google.com/storage/docs/authentication/hmackeys[HMAC keys]. Then configure it to be your backup storage via the following steps.
 
 . Enable storing backup data to GCS, and ensure other backup types are disabled.
