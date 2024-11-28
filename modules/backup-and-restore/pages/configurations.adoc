@@ -10,7 +10,7 @@ All commands must be run from the TigerGraph Linux user.
 
 The following is a list of configurations available for backup and restore.
 
-**NOTE**: For `System.Backup.Local.Enable`, `System.Backup.S3.Enable`, `System.Backup.ABS.Enable`, and `System.Backup.GCS.Enable`, only one can be enabled at a time.
+[NOTE]: For `System.Backup.Local.Enable`, `System.Backup.S3.Enable`, `System.Backup.ABS.Enable`, and `System.Backup.GCS.Enable`, only one can be enabled at a time.
 
 |===
 |Configuration parameter |Description |Default
