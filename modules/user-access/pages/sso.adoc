@@ -174,7 +174,7 @@ A configured AD FS server should belong to an AD DS (Domain Service) and have an
 https://host:14240/gsql/v1/saml/meta`
 ----
 
-image::adfs-sso-step-2.png[]
+image::sso-config-with-adfs.png[]
 
 [start=3]
 . In the Endpoints tab, your URL appears under SAML Assertion Consumer Endpoints. The Trusted URL is in this format:
