@@ -122,7 +122,9 @@ xref:tigergraph-server:reference:configuration-parameters.adoc[Configuration Par
 == Release Notes
 To keep up-to-date on key new features of the most recent LTS versions of TigerGraph, please see:
 
-* xref:tigergraph-server:release-notes:index.adoc[Release Notes - TigerGraph 3.10]
+* xref:4.1@tigergraph-server:release-notes:index.adoc[Release Notes - TigerGraph 4.1]
+* xref:3.11@tigergraph-server:release-notes:index.adoc[Release Notes - TigerGraph 3.11]
+* xref:3.10@tigergraph-server:release-notes:index.adoc[Release Notes - TigerGraph 3.10]
 * xref:3.9@tigergraph-server:release-notes:index.adoc[Release Notes - TigerGraph 3.9]
 * xref:3.6@tigergraph-server:release-notes:index.adoc[Release Notes - TigerGraph 3.6]
 
