@@ -409,7 +409,7 @@ System.LogRoot) of log directory for GSE |`gse`
 storage/replication |`GSE_journal_`
 
 |GSE.LeaderElectionTTLSec |The time-to-live of a GSE election
-participant.A GSE will be kicked out of election if one GSE is not
+participant. A GSE will be kicked out of election if one GSE is not
 responsive after the TTL. |`30`
 
 |GSE.RLSPort |The serving port of GSE RLS |`8900`
@@ -928,6 +928,14 @@ the key from file) |`nan`
 |Name |Description |Example
 |RESTPP.BasicConfig.Env | A list of `<environment variable>=<value>` pairs, separated by `;`
 |`LD_PRELOAD=$LD_PRELOAD; LD_LIBRARY_PATH=$LD_LIBRARY_PATH; REPORT_FIRST_N_LINES=$REPORT_FIRST_N_LINES`
+
+|RESTPP.AsyncQuery.ResultFileMaxDurationDay
+|The maximum number of days to retain asynchronous query result files.
+The default is 2. | `3`
+
+|RESTPP.AsyncQuery.CleanIntervalHour
+|Interval in hours between executions of the thread to clean out  asynchronous query result files older than `MaxDurationDay`.
+The default is 24.| `12`
 
 |RESTPP.BasicConfig.LogConfig.LogFileMaxDurationDay |The maximum number
 of days to retain old log files based on the timestamp encoded in their
