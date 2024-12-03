@@ -960,21 +960,13 @@ Sample Response::
 === show one graph detailed info with given graph name
 
 
-`GET /gsql/v1/schema/graphs`
+`GET /gsql/v1/schema/graphs/{graph}`
 
 This endpoint is used to show one graph detailed info with given graph name.
 
 ==== Parameters:
 
-//[width="100%",cols="25%,25%,50%",options="header",]
-[%autowidth]
-|===
-| Name | Required | Description
-
-| `graph`
-| yes
-| Specifies for which graph the schema details to be shown.
-|===
+None
 
 ==== Example:
 [,tabs]
@@ -984,7 +976,7 @@ Sample Request::
 --
 [source,bash]
 ----
-curl -X GET -H "content-type: application/json" -u tigergraph:tigergraph "http://localhost:14240/gsql/v1/schema/graphs?graphName=financialGraph"
+curl -X GET -H "content-type: application/json" -u tigergraph:tigergraph "http://localhost:14240/gsql/v1/schema/graphs/financialGraph"
 ----
 --
 Sample Response::
