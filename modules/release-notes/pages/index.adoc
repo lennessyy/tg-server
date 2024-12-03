@@ -96,7 +96,9 @@ including a diagnosis, enabling users to take timely action.
 * New options and optimized behavior in `GADMIN CONFIG APPLY` to 
 xref:4.1@tigergraph-server:system-management:management-commands.adoc#_gadmin_config_apply[restart only those services] that have been affected by configuration changes.
 
-* **xref:4.1@tigergraph-server:API:built-in-endpoints.adoc#_monitor_system_metrics_openmetrics_format[Enhanced Metrics Reports]** Total and available capacity for CPU and memory are now reported by the `/informant/metrics` endpoint.
+* **xref:4.1@tigergraph-server:API:built-in-endpoints.adoc#_monitor_system_metrics_openmetrics_format[Enhanced Metrics Reports]**: Total and available capacity for CPU and memory are now reported by the `/informant/metrics` endpoint.
+
+* **xref:4.1@tigergraph-server:reference:configuration-parameters.adoc#_restpp[Two new RESTPP Configuration Parameters]** to control how long the result files for xref:4.1@gsql-ref:querying:query-operations.adoc#_detached_mode_async_option[asynchronous queries] are retained.
 
 
 === Kubernetes Operator Enhancements
