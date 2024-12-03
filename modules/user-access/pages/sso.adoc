@@ -171,7 +171,7 @@ A configured AD FS server should belong to an AD DS (Domain Service) and have an
 . Under "Relying party identifiers", use this format, where `host` is replaced by your TigerGraph Server public IP address:
 [source, console]
 ----
-https://host:14240/gsql/v1/saml/meta`
+https://host:14240/gsql/v1/saml/meta
 ----
 
 image::sso-config-with-adfs.png[]
