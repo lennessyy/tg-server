@@ -27,7 +27,7 @@ aws sts assume-role --role-arn arn:aws:iam::<account-id>:role/<role> --role-sess
 
 For more details on temporary credentials, please refer to AWS documentation on  https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html[temporary security credentials in IAM].
 
-To use the temporary credential, add the below configs in the data source definition:
+To use the temporary credential, add the below configurations in the data source definition:
 [source,json]
 {
     "type": "s3",
