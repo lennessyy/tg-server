@@ -151,7 +151,7 @@ Introduces a more complete and standard set of REST APIs:
 - provides coverage for database commands previously only available as xref:4.1@tigergraph-server:API:gsql-endpoints.adoc[GSQL commands].
 - allows developers and AI to more easily control and use TigerGraph programmatically.
 
-* [4.1.1] Added token function **xref:4.1@gsql-ref:ddl-and-loading:creating-a-loading-job.adoc#_token_functions[get_current_datatime()]** for loading jobs.
+* [4.1.1] Added token function **xref:4.1@gsql-ref:ddl-and-loading:creating-a-loading-job.adoc#_token_functions[gsql_current_datetime()]** for loading jobs.
 
 ////
 * **xref:4.1@gsql-ref:querying:accumulators.adoc#_edge_attached_accumulators[Edge Accumulators in Multi-hop Queries]**
