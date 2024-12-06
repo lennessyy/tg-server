@@ -24,7 +24,7 @@
 **** xref:user-access:role-management.adoc[]
 **** xref:user-access:access-control-model.adoc[Access Control Model]
 **** xref:user-access:acl-management.adoc[]
-**** xref:user-access:rbac-row-policy/row-policy-overview.adoc[Row Policy Overview (Preview Feature)]
+**** xref:user-access:rbac-row-policy/row-policy-overview.adoc[Row Policy Overview]
 ***** xref:user-access:rbac-row-policy/rbac-row-policy.adoc[Key Concepts]
 ***** xref:user-access:rbac-row-policy/setup-row-policy.adoc[]
 //Backup and Restore
