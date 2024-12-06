@@ -25,7 +25,7 @@ A temporary credential can be generated from the AWS CLI. For example:
 [source,bash]
 aws sts assume-role --role-arn arn:aws:iam::<account-id>:role/<role> --role-session-name "<session-name>"
 
-For more details on temporary credentials, please check https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html[AWS doc].
+For more details on temporary credentials, please refer to AWS documentation on  https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html[temporary security credentials in IAM].
 
 To use the temporary credential, add the below configs in the data source definition:
 [source,json]
