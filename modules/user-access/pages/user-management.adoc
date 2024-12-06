@@ -95,7 +95,7 @@ The user ":"/.,@#$%^*()_+=-" is created.
 
 == View roles assignments and login attempts
 The `SHOW USER` command displays the role assignments, as well as the login attempts,  of the current user.
-If the current user hsa the `READ_USER` privilege
+If the current user has the `READ_USER` privilege
 
 === Syntax
 
