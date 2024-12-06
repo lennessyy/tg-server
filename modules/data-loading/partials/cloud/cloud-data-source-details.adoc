@@ -20,7 +20,8 @@ See Using IAM Roles for Amazon EC2 for more information.
     "secret.key": "<secret key>"
 }
 
-For temporary access to a bucket, we support AWS temporary credential provider. A temporary credential can be generated from AWS console, for example, using cloud shell:
+For temporary access to a bucket, we support AWS temporary credentials.
+A temporary credential can be generated from the AWS CLI. For example:
 [source,bash]
 aws sts assume-role --role-arn arn:aws:iam::<account-id>:role/<role> --role-session-name "<session-name>"
 
