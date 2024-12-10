@@ -1563,7 +1563,7 @@ curl -X POST --data-binary @./work_at.csv "http://localhost:9000/ddl/poc_graph?t
 
 | `header`
 | No
-| Whether to skip loading the header line of the file or not. The value should be either true or false. The default value is false.
+| If the value is true, the first line of the data file is a header line and will not be loaded as data. The default is false.
 
 | `sep`
 | No

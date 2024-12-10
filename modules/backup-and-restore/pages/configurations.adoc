@@ -248,4 +248,3 @@ gadmin config set "System.Backup.GCS.Secret" "<secret>"
 ----
 gadmin config apply -y
 ----
-
