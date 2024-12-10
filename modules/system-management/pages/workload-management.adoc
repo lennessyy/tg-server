@@ -150,7 +150,7 @@ GET /gsql/v1/workload-manager/configs
 ----
 Dump the queue configs so that the response would be the equivalent of the payload for `POST`.
 The purpose of this API is to retrieve the active configs and modify them on top of it.
-Other than the administrative purposes, one may use `SHOW WORKLOAD QUEUE` instead.
+Use `SHOW WORKLOAD QUEUE` to view queue details. Use `GET WORKLOAD QUEUE` for exporting configurations.
 
 ===== Example Request
 [source.warp, bash]
@@ -267,7 +267,7 @@ You must use separate commands for each entity type.
 ----
 GET gsql/v1/workload-manager/permission
 ----
-Show info on a specific workload queue or all.
+Lists information about all or specific workload queues, including permissions and details.
 
 ===== Query Parameters
 [cols="20h,~,20h"]
@@ -325,7 +325,7 @@ GET WORKLOAD QUEUE
 To show the permission info of a specific queue, for example `OLTP`:
 [source.wrap,gsql]
 ----
-GET WORKLOAD QUEUE OLTP
+SHOW WORKLOAD QUEUE OLTP
 ----
 
 ==== List Workload Queue
