@@ -82,7 +82,7 @@ It is imperative to employ the property name to designate the CDC topic, such as
 ----
 echo -e "name=cdc_topic" > /home/tigergraph/test_cdc/cdc_topic_config
 
-gadmin config set System.CDC.TopicConfig "/home/tigergraph/test_cdc/cdc_topic_config"
+gadmin config set System.CDC.TopicConfig @/home/tigergraph/test_cdc/cdc_topic_config
 ----
 
 For other configuration settings please see the xref:_other_configuration_settings_table[Other Configuration Settings Table].
