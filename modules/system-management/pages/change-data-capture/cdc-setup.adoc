@@ -65,7 +65,7 @@ mkdir -p /home/tigergraph/test_cdc
 # The ip:port is bind to target external kafka server
 echo -e "bootstrap.servers=$(gmyip):9092\nenable.idempotence=true" > /home/tigergraph/test_cdc/cdc_producer_config
 
-gadmin config set System.CDC.ProducerConfig "/home/tigergraph/test_cdc/cdc_producer_config"
+gadmin config set System.CDC.ProducerConfig @/home/tigergraph/test_cdc/cdc_producer_config
 ----
 
 === System.CDC.TopicConfig
@@ -82,7 +82,7 @@ It is imperative to employ the property name to designate the CDC topic, such as
 ----
 echo -e "name=cdc_topic" > /home/tigergraph/test_cdc/cdc_topic_config
 
-gadmin config set System.CDC.TopicConfig "/home/tigergraph/test_cdc/cdc_topic_config"
+gadmin config set System.CDC.TopicConfig @/home/tigergraph/test_cdc/cdc_topic_config
 ----
 
 For other configuration settings please see the xref:_other_configuration_settings_table[Other Configuration Settings Table].
@@ -172,8 +172,8 @@ echo -e "bootstrap.servers=$MYIP:9092\nenable.idempotence=true" > /home/tigergra
 
 echo -e "name=cdc_topic" > /home/tigergraph/test_cdc/cdc_topic_config
 
-gadmin config set System.CDC.ProducerConfig "/home/tigergraph/test_cdc/cdc_producer_config"
-gadmin config set System.CDC.TopicConfig "/home/tigergraph/test_cdc/cdc_topic_config"
+gadmin config set System.CDC.ProducerConfig @/home/tigergraph/test_cdc/cdc_producer_config
+gadmin config set System.CDC.TopicConfig @/home/tigergraph/test_cdc/cdc_topic_config
 gadmin config set System.CDC.Enable true
 gadmin config apply
 gadmin restart gpe restpp
