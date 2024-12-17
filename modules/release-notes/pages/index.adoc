@@ -214,15 +214,16 @@ AdminPortal UI for the xref:#finer_grain_query_privileges[fine-grained query pri
 ==== Functionality
 * Fixed issue where query installation failed for single-node queries that initialize vertex set variables in conditional branches (e.g., `if-else` or `case-when` statements) (GLE-8908).
 * Fixed disk critical issue caused by the rebuilder getting stuck in a partitioned cluster after dropping vertex or edge attributes (CORE-4418).
-* Fixed issue with error codes in the log when a CDC message failed to deliver to external Kafka (CORE-4425).
+* Fixed issue where CDC errors were not properly recorded in logs unless the log level was set to DEBUG (CORE-4425).
 * Fixed query compilation error when iterating through a `foreach` statement to retrieve an `accum` type attribute in a query compiled with the `-single` or `distributed` keyword. Ensured operations between two different `GroupByAccums` hold the same data types and field names (GLE-9054).
 * Fixed restore failure when importing GSQL data due to excessive time taken by the GSQL warmup process (TP-6948).
-* Fixed an exception (`NoSuchElementException`) when removing all tokens (GLE-9022).
+* Fixed an exception (NoSuchElementException) when removing all access tokens from the system (GLE-9022).
+* Fixed a CDC UNKNOWN ID issue occurring under high load in the GSE service (CORE-4444).
 
 ==== Improvements
 * Improved the performance of GSQL queries containing delete statements intended for deleting all vertices of a given type (GLE-8913).
-* Added support for customizing pod labels and annotations in the `PodTemplateSpec` of the StatefulSet managing TigerGraph pods (TP-6901).
-* Resolved a CDC `UNKNOWN` ID issue occurring under high load in the GSE service (CORE-4444).
+* Added new fields PodInitLabels and PodInitAnnotations in the PodTemplateSpec of the StatefulSet managing TigerGraph pods. These fields allow users to customize pod labels and annotations for initialization purposes (TP-6901).
+
 
 === Fixed and Improved in 4.1.1
 
