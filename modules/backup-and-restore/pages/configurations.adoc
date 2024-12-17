@@ -47,10 +47,7 @@ S3 Role ARN takes priority over access keys. For more information, see link:http
 |System.Backup.ABS.Enable |Enables or disables backup to ABS (Azure Blob Storage).|`false`
 |System.Backup.ABS.ContainerName |Azure storage account container|`nan`
 |System.Backup.ABS.AccountName |Azure storage account name for authentication.| `nan`
-|System.Backup.ABS.AccountKey |Account key for the Azure storage account.
-
-[NOTE]: If setting this in interactive mode, store the key in a file and provide the path to the file, e.g., `@/tmp/test_key`.
-| `nan`
+|System.Backup.ABS.AccountKey |Account key for the Azure storage account.| `nan`
 |System.Backup.ABS.Endpoint|Optional Blob service endpoint; if not given, the default endpoint https://<account-name>.blob.core.windows.net will be used.|`nan`
 |System.Backup.GCS.Enable |Enables or disables backup to Google Cloud Storage (GCS).|`false`
 |System.Backup.GCS.BucketName |GCS bucket.|`nan`
