@@ -1,6 +1,6 @@
 = Point-in-Time Restore
 
-The Point-in-Time Restore, introduced in version 4.1, enables users to restore their database to a specific time using backups made at earlier points, even if a backup was not created exactly at the desired time. This is particularly helpful when recovering from unwanted changes or data corruption, allowing users to restore the database without losing other work done after the last backup.
+The Point-in-time restore, introduced in version 4.1, enables users to restore their database to a specific time using backups made at earlier points, even if a backup was not created exactly at the desired time. This is particularly helpful when recovering from unwanted changes or data corruption, allowing users to restore the database without losing other work done after the last backup.
 This feature relies on the user having made one or more xref:tigergraph-server:backup-and-restore:differential-backups.adoc[differential backups].
 Point-in-Time Restore relies on having full and differential backups in place.
 
@@ -34,7 +34,7 @@ $ gadmin backup restore 2024-06-01T14:24:31Z --time-point
 
 == Key Considerations
 
-Point-in-Time Restore relies on both full and differential backups to restore the database to a specific time. When selecting a time point for restoration, it is crucial to ensure that the chosen time point meets certain conditions. Specifically, the time point must not fall under the following cases:
+Point-in-time restore relies on both full and differential backups to restore the database to a specific time. When selecting a time point for restoration, it is crucial to ensure that the chosen time point meets certain conditions. Specifically, the time point must not fall under the following cases:
 
 * Time Points Before the First Full Backup or After the Current Time:
 
@@ -67,12 +67,12 @@ This new backup will cover the time range from the creation time of the specifie
 
 == Limitations
 
-.Point-in-Time Restore examples.
+.Point-in-time restore examples.
 image::PIT_restore.png[]
 
-* GSQL Content: Point-in-time restore is designed primarily to restore data. For other stateful information, including schemas and RBAC settings, cannot be restored to the exact version at the provided time point. After a Point-in-Time Restore, these elements will reflect the version of the nearest differential backup used before the target restore time.
+* GSQL Content: Point-in-time restore is designed primarily to restore data. For other stateful information, including schemas and RBAC settings, cannot be restored to the exact version at the provided time point. After a Point-in-time restore, these elements will reflect the version of the nearest differential backup used before the target restore time.
 * Precision Window: Point-in-time restore operates with a precision window of a few minutes. To ensure optimal data consistency, it is recommended to restore to a time point at least 2-3 minutes before the timestamp of any unwanted changes.
-* Coverage: Point-in-Time Restore cannot be performed for timestamps not covered by an existing differential backup. If the desired time point is not covered, a new differential backup must be created before performing the restore.
+* Coverage: Point-in-time restore cannot be performed for timestamps not covered by an existing differential backup. If the desired time point is not covered, a new differential backup must be created before performing the restore.
 
 
 
