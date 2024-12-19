@@ -187,7 +187,7 @@ Similar to backing up to AWS S3, once the Azure Blob Storage Container is create
 [console,]
 ----
 gadmin config set "System.Backup.ABS.Enable" "true"
-
+----
 . Specify the backup ABS Endpoint(or leave it empty if the default endpoint is okay)
 +
 [console,]
@@ -254,4 +254,3 @@ gadmin config set "System.Backup.GCS.Secret" "<secret>"
 ----
 gadmin config apply -y
 ----
-
