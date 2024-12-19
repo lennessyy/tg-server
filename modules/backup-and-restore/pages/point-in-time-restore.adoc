@@ -16,7 +16,7 @@ To understand the mechanism behind point-in-time restore (PITR), it’s vital to
 
 == Usage
 
-To perform a Point-in-Time Restore, use the following command:
+To perform a point-in-time restore, use the following command:
 
 [console, gsql]
 ----
