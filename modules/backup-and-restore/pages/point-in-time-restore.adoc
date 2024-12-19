@@ -4,7 +4,7 @@ The Point-in-Time Restore, introduced in version 4.1, enables users to restore t
 This feature relies on the user having made one or more xref:tigergraph-server:backup-and-restore:differential-backups.adoc[differential backups].
 Point-in-Time Restore relies on having full and differential backups in place.
 
-To understand the mechanism behind PITR, it’s vital to know how backups work:
+To understand the mechanism behind point-in-time restore (PITR), it’s vital to know how backups work:
   * Full Backup: A comprehensive snapshot of the entire database at a specific time. This backup serves as the baseline for all future recovery operations.
   * Differential Backup: Captures changes made since the last full backup.
 
