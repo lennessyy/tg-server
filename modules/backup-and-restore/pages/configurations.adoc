@@ -10,6 +10,8 @@ All commands must be run from the TigerGraph Linux user.
 
 The following is a list of configurations available for backup and restore.
 
+[NOTE]: For `System.Backup.Local.Enable`, `System.Backup.S3.Enable`, `System.Backup.ABS.Enable`, and `System.Backup.GCS.Enable`, only one can be enabled at a time.
+
 |===
 |Configuration parameter |Description |Default
 
@@ -142,13 +144,13 @@ gadmin config set "System.Backup.S3.BucketName" "<bucket-name>"
 .Set S3 backup AccessKeyID
 [console,]
 ----
-gadmin config set "System.Backup.S3.AWSAccessKeyID" "<access-key-id>"
+gadmin config set "System.Backup.S3.AccessKeyID" "<access-key-id>"
 ----
 +
 .Set S3 backup SecretAccessKey
 [console,]
 ----
-gadmin config set "System.Backup.S3.AWSSecretAccessKey" "<secret-access-key>"
+gadmin config set "System.Backup.S3.SecretAccessKey" "<secret-access-key>"
 ----
 +
 Alternatively, instead of using `AccessKeyID` and `SecretAccessKey`, you may use link:https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arnsp[AWS Role ARN] for the authentication.
@@ -169,3 +171,81 @@ gadmin config apply -y
 ----
 gadmin restart all -y
 ----
+
+== Backup to ABS (Azure Blob Storage)
+
+Similar to backing up to AWS S3, once the Azure Blob Storage Container is created and configured properly (refer to https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blobs-introduction[Introduction to Azure Blob Storage]), then configure it to be your backup storage via the following steps.
+
+. Enable storing backup data to ABS, and ensure other backup types are disabled.
++
+[console,]
+----
+gadmin config set "System.Backup.ABS.Enable" "true"
+
+. Specify the backup ABS Endpoint(or leave it empty if the default endpoint is okay)
++
+[console,]
+----
+gadmin config set "System.Backup.ABS.Endpoint" "https://<account-name>.blob.core.windows.net"
+----
+. Specify ABS ContainerName
++
+[console,]
+----
+gadmin config set "System.Backup.ABS.ContainerName" "<container-name>"
+----
+. Set ABS backup AccountName
++
+[console,]
+----
+gadmin config set "System.Backup.ABS.AccountName" "<account-name>"
+----
+
+. Set ABS backup AccountKey
++
+[console,]
+----
+gadmin config set "System.Backup.ABS.AccountKey" "<account-key>"
+----
+. Apply the new parameter values
++
+[console,]
+----
+gadmin config apply -y
+----
+
+== Backup to GCS (Google Cloud Storage)
+Similar to backing up to ABS, prepare the proper https://cloud.google.com/storage/docs/authentication/hmackeys[HMAC keys]. Then configure it to be your backup storage via the following steps.
+
+. Enable storing backup data to GCS, and ensure other backup types are disabled.
++
+[console,]
+----
+gadmin config set "System.Backup.GCS.Enable" "true"
+----
+. Specify GCS BucketName
++
+[console,]
+----
+gadmin config set "System.Backup.GCS.BucketName" "<bucket-name>"
+----
+. Set GCS backup AccessKey
++
+[console,]
+----
+gadmin config set "System.Backup.GCS.AccessKey" "<access-key>"
+----
+
+. Set GCS backup Secret
++
+[console,]
+----
+gadmin config set "System.Backup.GCS.Secret" "<secret>"
+----
+. Apply the new parameter values
++
+[console,]
+----
+gadmin config apply -y
+----
+
