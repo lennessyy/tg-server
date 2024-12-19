@@ -428,7 +428,7 @@ To upsert edges with discriminators, use the following JSON format:
 2. *Other attributes, like "weight":*
 * Attributes not part of the discriminator (e.g., `weight`) can be updated when upserting.
 
-3. Nested Structure:
+3. *Nested Structure:*
 * The JSON groups the edge by source vertex type (User) and source vertex ID (id1).
 * Inside, the edge type (Liked) connects the source to the target vertex type (User) and target vertex ID (id6).
 * The `value` field holds the attribute value for each edge attribute.
