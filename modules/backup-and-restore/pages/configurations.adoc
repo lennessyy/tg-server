@@ -44,8 +44,6 @@ S3 Role ARN takes priority over access keys. For more information, see link:http
 
 |System.Backup.S3.BucketName |Bucket for AWS S3 or S3-compatible services.|'nan'
 
-|System.Backup.S3.Enable |Enables or disables backup to AWS S3 or S3-compatible services such as Ceph S3.|`+false+`
-
 |System.Backup.S3.Endpoint | A URL used to interact with the S3 (AWS S3/S3-compatible) service. It can be used for AWS S3 VPC Endpoint, customer endpoint, or S3-compatible service. For regular AWS S3, leave it empty.|`nan`
 
 |System.Backup.ABS.Enable |Enables or disables backup to ABS (Azure Blob Storage).|`false`
