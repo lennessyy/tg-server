@@ -23,7 +23,7 @@ To perform a point-in-time restore, use the following command:
 $ gadmin backup restore <timepoint_to_restore> --time-point
 ----
 
-[NOTE]:The <timepoint_to_restore> should be provided in timestamp format (e.g., 2024-06-01T14:24:31Z). The restore operation has a 1-second granularity, so any fractional seconds will be ignored.
+[NOTE]:The <timepoint_to_restore> should be provided in timestamp format (e.g., 2024-06-01T14:24:31Z). The restore operation accepts timestamps with 1-second granularity, so any fractional seconds will be ignored.
 
 For example, to restore the cluster to the time 2024-06-01T14:24:31Z, run:
 
