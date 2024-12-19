@@ -15,7 +15,7 @@ The following is a list of configurations available for backup and restore.
 |===
 |Configuration parameter |Description |Default
 
-|System.Backup.Local.Enable |Whether to store the database backup data to a local path. *IMPORTANT*: See note at end of table.
+|System.Backup.Local.Enable |Whether to store the database backup data to a local path.
 |`false`
 
 |System.Backup.Local.Path |Local path to store the backup files.
