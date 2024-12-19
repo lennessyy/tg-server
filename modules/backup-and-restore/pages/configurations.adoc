@@ -57,7 +57,10 @@ S3 Role ARN takes priority over access keys. For more information, see link:http
 |System.Backup.GCS.Enable |Enables or disables backup to Google Cloud Storage (GCS).|`false`
 |System.Backup.GCS.BucketName |GCS bucket.|`nan`
 |System.Backup.GCS.AccessKeyID |Access Key for a GCS HMAC Key.| `nan`
-|System.Backup.GCS.Secret |Secret for a GCS HMAC Key.| `nan`
+|System.Backup.GCS.Secret |Secret for a GCS HMAC Key.
+
+[NOTE]: If setting this in interactive mode, store the key in a file and provide the path to the file, e.g., `@/tmp/test_secret`.
+| `nan`
 |System.Backup.GCS.Endpoint|GCS Storage URI.|`https://storage.googleapis.com`
 
 |System.Backup.TimeoutSec |Timeout limit for the backup operation in seconds |`+18000+`
