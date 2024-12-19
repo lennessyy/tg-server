@@ -393,7 +393,9 @@ CREATE DIRECTED EDGE Liked (
 );  
 ----
 
-==== Old format (Single edge):
+==== JSON Format for Edges with Discriminators
+
+To upsert edges with discriminators, use the following JSON format:
 
 [source,json]
 ----
@@ -419,45 +421,22 @@ CREATE DIRECTED EDGE Liked (
 }
 ----
 
-==== New format (Multi-Edges with JSON arrays):
+1. *"actionId" is the discriminator:*
+* The `actionId` uniquely identifies each edge instance of type `Liked` between the same source (id1) and target (id6) vertices.
+* Discriminators are required when upserting edges of this type and must be included in the JSON payload.
 
-[source,json]
-----
-{
-  "edges": {
-    "User": {
-      "id1": {
-        "Liked": {
-          "User": {
-            "id6": [
-              {
-                "actionId": {
-                  "value": "uuid-1"
-                },
-                "weight": {
-                  "value": 5.0
-                }
-              },
-              {
-                "actionId": {
-                  "value": "uuid-2"
-                },
-                "weight": {
-                  "value": 3.0
-                }
-              }
-            ]
-          }
-        }
-      }
-    }
-  }
-}
-----
+2. *Other attributes, like "weight":*
+* Attributes not part of the discriminator (e.g., `weight`) can be updated when upserting.
+
+3. Nested Structure:
+* The JSON groups the edge by source vertex type (User) and source vertex ID (id1).
+* Inside, the edge type (Liked) connects the source to the target vertex type (User) and target vertex ID (id6).
+* The `value` field holds the attribute value for each edge attribute.
 
 NOTE: 
-* The new format allows upserting multiple edges with different discriminator values between the same vertices.
-* Regular edges do not support this format.
+* This format is the only supported way to upsert edges with discriminators in the current version.
+* Discriminator attributes are required for creating edges and cannot be updated after the edge is created.
+* A future version will introduce support for upserting multiple edges with discriminators using JSON arrays.
 
 == General rules for JSON formatting
 
