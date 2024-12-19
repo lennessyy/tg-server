@@ -16,12 +16,12 @@ The following is a list of configurations available for backup and restore.
 |Configuration parameter |Description |Default
 
 |System.Backup.Local.Enable |Whether to store the database backup data to a local path. *IMPORTANT*: See note at end of table.
-
-If this parameter is set to true, `System.Backup.S3.Enable` cannot be set to true.
 |`false`
 
 |System.Backup.Local.Path |Local path to store the backup files.
 Required if backup is to be stored locally. |null
+
+|System.Backup.S3.Enable |Enables or disables backup to AWS S3 or S3-compatible services such as Ceph S3.|`false`
 
 |System.Backup.S3.AWSAccessKeyID |AWS Access Key ID for authentication (deprecated, use System.Backup.S3.AccessKeyID instead, which has a higher priority. |'nan'
 
