@@ -88,7 +88,7 @@ Alternatively, you can use `gadmin config set <parameter>` to change the value o
 
 After configuring the parameters, run `gadmin config apply` to apply the new parameter values.
 
-== Configure backup to AWS S3 Endpoint
+== Backup to AWS S3
 
 Typically, there's no need to configure the `System.Backup.S3.Endpoint` parameter on a TigerGraph Server.
 This is because the system auto-detects the regional endpoint for AWS S3 backups.
