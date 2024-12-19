@@ -70,7 +70,7 @@ This new backup will cover the time range from the creation time of the specifie
 .Point-in-Time Restore examples.
 image::PIT_restore.png[]
 
-* GSQL Content: The GSQL content, such as schemas and RBAC settings, cannot be restored to the exact version at the provided time point. After a Point-in-Time Restore, these elements will reflect the version of the nearest differential backup used.
+* GSQL Content: Point-in-time restore is designed primarily to restore data. For other stateful information, including schemas and RBAC settings, cannot be restored to the exact version at the provided time point. After a Point-in-Time Restore, these elements will reflect the version of the nearest differential backup used.
 * Precision Window: Point-in-Time Restore operates with a precision window of a few minutes. To ensure optimal data consistency, it is recommended to restore to a time point at least 2-3 minutes before the timestamp of any unwanted changes.
 * Coverage: Point-in-Time Restore cannot be performed for timestamps not covered by an existing differential backup. If the desired time point is not covered, a new differential backup must be created before performing the restore.
 
