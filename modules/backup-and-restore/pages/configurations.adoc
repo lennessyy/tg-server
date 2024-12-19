@@ -32,7 +32,9 @@ Required if backup is to be stored locally. |null
 
 |System.Backup.S3.AccessKeyID |Access key ID for authentication for AWS S3 or S3-compatible services.| `nan`
 |System.Backup.S3.SecretAccessKey |
-Secret Access Key for authentication for AWS S3 or S3-compatible services.|`+nan+`
+Secret Access Key for authentication for AWS S3 or S3-compatible services.
+
+[NOTE]: If setting this in interactive mode, store the key in a file and provide the path to the file, e.g., `@/tmp/test_secret`.|`+nan+`
 
 |System.Backup.S3.RoleARN |The AWS role for accessing s3 buckets.
 S3 Role ARN takes priority over access keys. For more information, see link:https://docs.aws.amazon.com/IAM/latest/APIReference/API_Role.html[AWS role ARN documentation].
