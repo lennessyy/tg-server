@@ -1243,7 +1243,7 @@ used to compress equals the node CPU’s cores. |`0`
 |System.Backup.Local.Path |The path to store the backup files |`nan`
 |System.Backup.S3.AWSAccessKeyID |AWS Access Key ID for authentication (deprecated, use System.Backup.S3.AccessKeyID instead, which has a higher priority.) |`nan`
 
-|System.Backup.S3.AWSSecretAccessKey AWS Secret Access Key for authentication (deprecated, use System.Backup.S3.SecretAccessKey instead, which has a higher priority.) |`nan`
+|System.Backup.S3.AWSSecretAccessKey |AWS Secret Access Key for authentication (deprecated, use System.Backup.S3.SecretAccessKey instead, which has a higher priority.) |`nan`
 
 |System.Backup.S3.AccessKeyID |Access key ID for authentication for AWS S3 or S3-compatible services.| `nan`
 |System.Backup.S3.SecretAccessKey |Secret Access Key for authentication for AWS S3 or S3-compatible services.|`nan`
