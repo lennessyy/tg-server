@@ -5,8 +5,9 @@ This feature relies on the user having made one or more xref:tigergraph-server:b
 Point-in-Time Restore relies on having full and differential backups in place.
 
 To understand the mechanism behind point-in-time restore (PITR), it’s vital to know how backups work:
-  * Full Backup: A comprehensive snapshot of the entire database at a specific time, serving as the baseline for all future recovery operations.
-  * Differential Backup: A snapshot that captures changes made since the last full backup.
+
+  - Full Backup: A comprehensive snapshot of the entire database at a specific time, serving as the baseline for all future recovery operations.
+  - Differential Backup: A snapshot that captures changes made since the last full backup.
 
 == Use Cases
 * Recovering from Data Corruption: If a database becomes corrupted due to hardware failures or software issues, PITR allows recovery to a state before the corruption.
