@@ -223,7 +223,7 @@ AdminPortal UI for the xref:#finer_grain_query_privileges[fine-grained query pri
 ==== Improvements
 * Improved the performance of GSQL queries containing delete statements intended for deleting all vertices of a given type (GLE-8913).
 * Added new fields PodInitLabels and PodInitAnnotations in the PodTemplateSpec of the StatefulSet managing TigerGraph pods. These fields allow users to customize pod labels and annotations for initialization purposes (TP-6901).
-
+* Added functionality to allow Application Developers read-only access to TigerGraph logs (e.g., GSQL query logs, system logs) through GraphStudio without requiring sysadmin intervention (APPS-3253).
 
 === Fixed and Improved in 4.1.1
 
