@@ -433,10 +433,12 @@ To upsert edges with discriminators, use the following JSON format:
 * Inside, the edge type (Liked) connects the source to the target vertex type (User) and target vertex ID (id6).
 * The `value` field holds the attribute value for each edge attribute.
 
-NOTE: 
+[NOTE]
+====
 * This format is the only supported way to upsert edges with discriminators in the current version.
 * Discriminator attributes are required for creating edges and cannot be updated after the edge is created.
 * A future version will introduce support for upserting multiple edges with discriminators using JSON arrays.
+====
 
 == General rules for JSON formatting
 
