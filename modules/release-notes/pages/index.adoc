@@ -6,6 +6,8 @@
 :toc:
 :toclevels:2
 
+TigerGraph Server 4.1.2 was released on December 20, 2024.
+
 TigerGraph Server 4.1.1 was released on November 12, 2024.
 
 TigerGraph Server 4.1.0 preview version was released on August 30, 2024.
@@ -42,7 +44,7 @@ gives adminstrators finer control over who may do what actions with which object
 
 * **xref:4.1@tigergraph-server:user-access:jwt-token.adoc#_usage_of_gsql_jwt_token[JWT Authentication]**:
 JWT authorization/authentication is more secure than the plaintext tokens used in earlier TigerGraph versions.
-Users can generate and use JWT tokens when sending REST requests to the GSQL or REST servers.
+Users can generate and use JWT tokens when sending REST requests to the RESTPP server [in 4.1.0] or GSQL server [in 4.1.2].
 
 * **xref:4.1@tigergraph-server:security:password-policy.adoc[Password Complexity and Rotation Rules]**:
 Administrators can specify rules for the complexity of passwords and how long or how many times a password may be used, in order to improve security and help organizations to satisfy compliance requirements.
@@ -207,7 +209,27 @@ The Health Check Tool in TigerGraph AdminPortal provides administrators with a c
 * **Fine-grained Query Privileges in RBAC**:
 AdminPortal UI for the xref:#finer_grain_query_privileges[fine-grained query privileges] described above.
 
+* [4.1.2] **Read-only Access to Logs**:
+Permit users having the new prilivege `APP_ACCESS_LOG` (included in the `globaldesigner` and `superuser` built-in roles ) to read log files.
+
 == Fixed issues
+
+=== Fixed and Improved in 4.1.2
+
+==== Functionality
+* Fixed issue where query installation failed for single-node queries that initialize vertex set variables in conditional branches (e.g., `if-else` or `case-when` statements) (GLE-8908).
+* Fixed disk critical issue caused by the rebuilder getting stuck in a partitioned cluster after dropping vertex or edge attributes (CORE-4418).
+* Fixed issue where CDC errors were not properly recorded in logs unless the log level was set to DEBUG (CORE-4425).
+* Fixed query compilation error when iterating through a `foreach` statement to retrieve an `accum` type attribute in a query compiled with the `-single` or `distributed` keyword. Ensured operations between two different `GroupByAccums` hold the same data types and field names (GLE-9054).
+* Fixed restore failure when importing GSQL data due to excessive time taken by the GSQL warmup process (TP-6948).
+* Fixed an exception (NoSuchElementException) when removing all access tokens from the system (GLE-9022).
+* Fixed a CDC UNKNOWN ID issue occurring under high load in the GSE service (CORE-4444).
+
+==== Improvements
+* Improved the performance of GSQL queries containing delete statements intended for deleting all vertices of a given type (GLE-8913).
+* Added new fields PodInitLabels and PodInitAnnotations in the PodTemplateSpec of the StatefulSet managing TigerGraph pods. These fields allow users to customize pod labels and annotations for initialization purposes (TP-6901).
+* Added functionality to allow Application Developers read-only access to TigerGraph logs (e.g., GSQL query logs, system logs) through GraphStudio without requiring sysadmin intervention (APPS-3253).
+* The GSQL REST endpoints now accept JWT tokens (GLE-8672).
 
 === Fixed and Improved in 4.1.1
 

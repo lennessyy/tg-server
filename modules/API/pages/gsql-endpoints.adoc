@@ -3,11 +3,17 @@
 :pp: {plus}{plus}
 :description: A set of GSQL REST API endpoints about vertex in TigerGraph server.
 //:page-aliases: built-in-endpoints.adoc
-:toc:
 
 This page describes the REST API endpoints accessible on a TigerGraph server. Assume all the sample requests and sample response are based on this sample schema (graph name is "financialGraph"):
 
-NOTE: For comparison, you can refer to the xref:built-in-endpoints.adoc[REST endpoints for TigerGraph 3.x].
+[NOTE]
+====
+In 4.0, the paths for most endpoints were revised to follow a more standard convention.
+Some functions were moved from the RESTPP server to the GSQL server for consistency.
+You can refer to the xref:built-in-endpoints.adoc[REST endpoints for TigerGraph 3.x] for comparison.
+====
+
+NOTE: As of version 4.1.2, JWT tokens can be used for authentication with GSQL server REST endpoints.
 
 .Sample schema
 image::financialGraph_schema.png[]
