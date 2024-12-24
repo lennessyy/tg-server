@@ -151,6 +151,7 @@ The first example below shows two `User` vertices having an attribute called `ag
 .Upsert Example Data 2: Adding Vertices and Edges
 
 This example starts with one `User` vertex (`id6`). Since `id6` contains no attributes, it will remain unchanged if it already exists. If it doesn’t yet exist, the request will create a vertex with ID `id6` with default attribute values. Two edges are created:
+
 * A `Liked` edge from `id1` to `id6`.
 * A `Liked_By` edge from `id6` to `id1`.
 
