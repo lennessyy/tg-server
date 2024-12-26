@@ -144,19 +144,38 @@ PUT WORKLOAD QUEUE FROM "{\"queues\":{\"OLTP\":{\"description\":\"OLTP queries\"
 
 ==== Get Workload Queue
 
-[source.wrap]
+The `GET WORKLOAD QUEUE` command retrieves the current workload queue configurations. This command is useful for exporting active configurations to modify them or back them up.
+
+===== GSQL Command
+[source.wrap,gsql]
 ----
-GET /gsql/v1/workload-manager/configs
+GET WORKLOAD QUEUE
 ----
-Dump the queue configs so that the response would be the equivalent of the payload for `POST`.
-The purpose of this API is to retrieve the active configs and modify them on top of it.
-Use `SHOW WORKLOAD QUEUE` to view queue details. Use `GET WORKLOAD QUEUE` for exporting configurations.
 
 ===== Example Request
 [source.warp, bash]
 ----
 curl -X GET -u tigergraph:tigergraph \
   <hostname>:<nginx-port>/gsql/v1/workload-manager/configs
+----
+
+===== Example Response
+[source, json]
+----
+{
+  "queueConfigs": {
+    "OLTP": {
+      "description": "OLTP queries",
+      "maxConcurrentQueries": 100,
+      "maxDelayQueueSize": 200
+    },
+    "Analytics": {
+      "description": "Analytical queries",
+      "maxConcurrentQueries": 50,
+      "maxDelayQueueSize": 100
+    }
+  }
+}
 ----
 
 ===== Response Status Codes
@@ -167,16 +186,77 @@ curl -X GET -u tigergraph:tigergraph \
 |403|The user doesn't have the privilege `READ_WORKLOAD_QUEUE`.
 |===
 
-===== GSQL Command
-[source.wrap,gsql]
-----
-GET WORKLOAD QUEUE
-----
+[NOTE]
+====
+* Use `GET WORKLOAD QUEUE` to dump queue configurations that are equivalent to the payload for POST.
+* This is primarily an *administrative command* for exporting configurations.
+* The `GET WORKLOAD QUEUE` command is a natural complement to other configuration commands like `PUT WORKLOAD QUEUE`.
+* After using `GET WORKLOAD QUEUE` to retrieve current configurations, you can modify them and reapply using `PUT WORKLOAD QUEUE`.
+====
 
 === Permissions
-You can grant or revoke workload queues to a user based on its user name, groups, and/or roles.
+
+==== Show Workload Queue
+
+The `SHOW WORKLOAD QUEUE` command lists detailed information about workload queues, including their permissions, descriptions, and limits. It is primarily used to inspect queue settings and permissions.
+
+===== GSQL Command
+To show the permission info of all queues:
+[source.wrap,gsql]
+----
+SHOW WORKLOAD QUEUE
+----
+
+To show the permission info of a specific queue, for example `OLTP`:
+[source.wrap,gsql]
+----
+SHOW WORKLOAD QUEUE OLTP
+----
+
+===== Example Request
+To retrieve the permission info of the queue `OLTP`:
+[source.warp, bash]
+----
+curl -X GET -u tigergraph:tigergraph \
+  localhost:14240/gsql/v1/workload-manager/permission?id=OLTP
+----
+
+===== Example Response
+The response will be the combination of configs and permission, e.g.
+[source, json]
+----
+{
+  "OLTP": {
+    "description": "OLTP queries",
+    "isDefault": false,
+    "maxConcurrentQueries": 100,
+    "maxDelayQueueSize": 200,
+    "granted": {
+      "USER": [],
+      "GROUP": ["*"],
+      "ROLE": ["r1", "r2"]
+    }
+  }
+}
+----
+
+===== Response Status Codes
+[cols="20h,~"]
+|===
+|Status Code|Description
+
+|200|The queue info has been retrieved successfully.
+|403|The user doesn't have the privilege `READ_WORKLOAD_QUEUE`.
+|===
+
+[NOTE]
+====
+* Use `SHOW WORKLOAD QUEUE` to inspect queue configurations and access permissions.
+* This command focuses on *visibility of queue settings*, unlike `GET WORKLOAD QUEUE`, which exports configurations.
+====
 
 ==== Grant/Revoke Workload Queue
+You can grant or revoke workload queues to a user based on its user name, groups, and/or roles.
 
 [source.wrap]
 ----
@@ -259,74 +339,11 @@ REVOKE WORKLOAD QUEUE OLTP FROM ALL GROUPS
 REVOKE WORKLOAD QUEUE OLTP FROM ALL ROLES
 ----
 
-NOTE: Unlike REST API, the GSQL commands don't allow you to specify USER, GROUP, and ROLE in a command.
-You must use separate commands for each entity type.
-
-==== Show Workload Queue
-
-----
-GET gsql/v1/workload-manager/permission
-----
-Lists information about all or specific workload queues, including permissions and details.
-
-===== Query Parameters
-[cols="20h,~,20h"]
-|===
-|Parameter|Description|Data type
-
-|`id` (optional)|The ID of the queue to be shown.
-If not specified, all queues will be shown.
-|`STRING`
-|===
-
-===== Example Request
-To retrieve the permission info of the queue `OLTP`:
-[source.warp, bash]
-----
-curl -X GET -u tigergraph:tigergraph \
-  localhost:14240/gsql/v1/workload-manager/permission?id=OLTP
-----
-
-===== Example Response
-The response will be the combination of configs and permission, e.g.
-[source, json]
-----
-{
-  "OLTP": {
-    "description": "OLTP queries",
-    "isDefault": false,
-    "maxConcurrentQueries": 100,
-    "maxDelayQueueSize": 200,
-    "granted": {
-      "USER": [],
-      "GROUP": ["*"],
-      "ROLE": ["r1", "r2"]
-    }
-  }
-}
-----
-
-===== Response Status Codes
-[cols="20h,~"]
-|===
-|Status Code|Description
-
-|200|The queue info has been retrieved successfully.
-|403|The user doesn't have the privilege `READ_WORKLOAD_QUEUE`.
-|===
-
-===== GSQL Command
-To show the permission info of all queues:
-[source.wrap,gsql]
-----
-GET WORKLOAD QUEUE
-----
-
-To show the permission info of a specific queue, for example `OLTP`:
-[source.wrap,gsql]
-----
-SHOW WORKLOAD QUEUE OLTP
-----
+[NOTE]
+====
+* Unlike `REST API`, the `GSQL` commands don't allow you to specify USER, GROUP, and ROLE in a command. You must use separate commands for each entity type.
+* The `SHOW WORKLOAD QUEUE` command allows you to review queue permissions before applying any changes using `GRANT` or `REVOKE`.
+====
 
 ==== List Workload Queue
 
