@@ -24,6 +24,22 @@ Workload queues manage the following types of operations:
 Workload queues help control how queries are executed within the system by defining limits such as the maximum number of concurrent queries and the maximum size of the delay queue.
 Administrators can configure workload queues by creating, modifying, or deleting them as needed.
 
+Each queue has the following properties:
+[cols="20h,~,~"]
+|===
+|Field|Description|Data type
+|`description`|The description of the queue.|`STRING` (< 256 characters)
+|`isDefault` (optional)|The flag to indicate if the queue is the default queue. Must be set to `true` for exactly one queue.|`BOOL`
+|`maxConcurrentQueries`|The maximum number of concurrent queries allowed in the queue.|`UINT` in the range of `(0, 131072)`
+|`maxDelayQueueSize`|The maximum number of queries that can be queued in the delay queue.|`UINT` in the range of `[0, 131072)`
+|===
+==== maxConcurrentQueries and maxDelayQueueSize
+`maxConcurrentQueries` and `maxDelayQueueSize` are enforced on per machine level. More specifically, it puts a limit on how many requests ONE `GPE` process can handle.
+For example, in a TigerGraph cluster with `4` nodes (there will be `4` `GPE` processes), the total number of qureies allowed for a `WorkloadQueue` is `4*maxConcurrentQueries`.
+Similarly, the total number of queries can be put into the corresponding delay queue is `4*maxDelayQueueSize`.
+TigerGraph internally would try to evenly distribute queries evenly among the nodes, hence, the `WorkloadQueue` from each `GPE` would be filled at a similar pace.
+
+
 Before making changes, it’s a good practice to retrieve the current configuration using the *GET Workload Queue* command. After reviewing, you can update or apply new configurations using the *PUT Workload Queue* command.
 These commands are available both as GSQL commands and as REST endpoints.
 
