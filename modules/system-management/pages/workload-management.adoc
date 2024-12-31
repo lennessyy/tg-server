@@ -3,7 +3,7 @@
 
 This page explains the different methods available to manage system workloads in TigerGraph.
 
-In distributed or replicated clusters, users have multiple processing units at their disposal. Depending on their needs, they can configure query routing schemes such as round-robin or CPU load-aware routing. For replicated clusters, queries can also be directed to specific replicas.
+In distributed or replicated clusters, users have multiple processing units at their disposal. Depending on their needs, they can configure xref:#_query_routing_schemes[query routing schemes] such as round-robin or CPU load-aware routing. For replicated clusters, queries can also be xref:#_specify_replica_to_run_query_on[directed to specific replicas].
 
 
 [#_workload_queues]
