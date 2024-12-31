@@ -68,7 +68,7 @@ GET /gsql/v1/workload-manager/configs
 * *Configure Workload Queues*
 [source.wrap]
 ----
-POST /gsqlserver/gsql/workload-manager/configs
+POST /gsql/v1/workload-manager/configs
 ----
 
 *Examples*
@@ -95,7 +95,7 @@ curl -X POST -u tigergraph:tigergraph \
 |===
 |Status Code|Description
 |200|The queue configurations were successfully retrieved.
-|403|The user does not have the READ_WORKLOAD_QUEUE privilege.
+|403|The user does not have the `READ_WORKLOAD_QUEUE` privilege.
 |500|Server error occurred while processing the request.
 |===
 
@@ -105,7 +105,7 @@ curl -X POST -u tigergraph:tigergraph \
 |Status Code|Description
 |200|The queue configurations were successfully uploaded.
 |400|The payload is ill-formed.
-|403|The user does not have the WRITE_WORKLOAD_QUEUE privilege.
+|403|The user does not have the `WRITE_WORKLOAD_QUEUE` privilege.
 |409|Conflict in the configuration, such as multiple queues set as default.
 |500|Server error occurred while processing the request.
 |===
@@ -189,7 +189,7 @@ REVOKE WORKLOAD QUEUE <queue_name> FROM USER <user1>, <user2>
 *REST Endpoint*
 [source.wrap]
 ----
-POST /gsqlserver/gsql/workload-manager/permission
+POST /gsql/v1/workload-manager/permission
 ----
 
 *Request Body*
@@ -224,6 +224,7 @@ The request body must have the following fields at the top level:
 ====
 
 *Example Request*
+
 Grant the queue `OLTP` to the user `u1` and `u2`:
 [source.warp, bash]
 ----
@@ -240,13 +241,13 @@ curl -X GET -u tigergraph:tigergraph \
   -d '{"action": "REVOKE" "queue": "scheduled_jobs", "user": "*", role": ["r1"]}'
 ----
 
-===== Response Status Codes
+*Response Status Codes*
 [cols="20h,~"]
 |===
 |Status Code|Description
 |200|The queue has been granted/revoked successfully.
 |400|The payload is ill-formed so none of the given entities could be granted/revoked.
-|403|The user doesn't have the privilege `WRITE_WORKLOAD_QUEUE``
+|403|The user doesn't have the privilege `WRITE_WORKLOAD_QUEUE`
 |===
 
 [NOTE]
@@ -275,7 +276,7 @@ SHOW WORKLOAD QUEUE OLTP
 *REST Endpoint*
 [source.wrap]
 ----
-GET /gsqlserver/gsql/workload-manager/permission
+GET /gsql/v1/workload-manager/permission
 ----
 
 *Example Request*
@@ -287,6 +288,7 @@ curl -X GET -u tigergraph:tigergraph \
 ----
 
 *Example Response*
+
 The response will be the combination of configs and permission, e.g.
 [source, json]
 ----
@@ -455,6 +457,7 @@ Suppose we have configured the following workload queues that are the output of 
 ----
 
 *Running a Query*
+
 When running a query, you can specify the workload queue to run the query on.
 If the queue is not specified, the query will be routed to the default queue.
 To specify the queue in the GSQL shell, you can use the `-queue` option, e.g.
