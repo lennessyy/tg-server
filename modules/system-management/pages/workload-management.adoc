@@ -46,7 +46,7 @@ PUT WORKLOAD QUEUE FROM "/path/to/queue.json"
 * *Retrieve Current Configuration:*
 [source.wrap]
 ----
-GET /gsqlserver/gsql/workload-manager/configs
+GET /gsql/v1/workload-manager/configs
 ----
 
 * *Configure Workload Queues*
