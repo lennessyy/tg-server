@@ -25,6 +25,7 @@ Workload queues help control how queries are executed within the system by defin
 Administrators can configure workload queues by creating, modifying, or deleting them as needed.
 
 Before making changes, it’s a good practice to retrieve the current configuration using the *GET Workload Queue* command. After reviewing, you can update or apply new configurations using the *PUT Workload Queue* command.
+These commands are available both as GSQL commands and as REST endpoints.
 
 *GSQL Commands*
 
