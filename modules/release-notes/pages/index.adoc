@@ -54,6 +54,7 @@ LTS versions are supported for 24 months from their initial release (X.X.0) and 
 ** [3.9.2] `/gsqlserver/gsql/clear-store` is equivalent to `GSQL CLEAR GRAPH STORE -HARD`
 ** [3.9.3] Added MirrorMaker (xref:3.9@tigergraph-server:data-loading:data-streaming-connector/kafka.adoc[external Kafka]) as a new type of GSQL data source.
 ** [3.9.3] Added new REST parameter `/allowExisting` to the `POST /requestoken` xref:3.9@tigergraph-server:API:built-in-endpoints.adoc[endpoint].
+** [3.9.3] Added support for xref:3.9@tigergraph-server:data-loading:load-from-cloud.adoc#_aws_s3[AWS S3 temporary credentials provider].
 
 * Added or changed xref:3.9@tigergraph-server:reference:configuration-parameters.adoc[configuration parameters]:
 ** `KafkaConnect.AllowedTaskPerCPU` limits the number of concurrent kafka loading tasks.
