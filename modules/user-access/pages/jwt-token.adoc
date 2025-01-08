@@ -10,6 +10,7 @@ Helping to secure users and their data.
 * In versions 3.10 and 3.11, JWT token support is limited to RESTPP endpoints and only for third-party JWT tokens.
 * GSQL server endpoints do not support JWT tokens in these versions.
 * Internally generated JWT tokens are also not supported in these versions.
+* Version 4.1.2 adds support for internally-generated JWT tokens and use with GSQL server endpoints, removing these limitations.
 ====
 
 Some basic understanding of TigerGraph’s user access through xref:tigergraph-server:user-access:enabling-user-authentication.adoc[] and xref:tigergraph-server:API:built-in-endpoints.adoc#_authentication[Built-in API Endpoints] is recommended before continuing.
@@ -419,8 +420,6 @@ When using a JWT token for authentication, please consider these scenarios and h
 ¦ Error Type ¦ Description
 
 ¦ Expiration ¦ If the token has expired, an error is thrown to indicate its expiration.
-
-¦ Unsupported Features ¦ GSQL endpoints do not support JWT tokens in these versions.
 
 ¦ User/Graph Existence ¦ If the user specified by sub claim does not exist in the TigerGraph system, an error is thrown to indicate the user does not exist.
 
