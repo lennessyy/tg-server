@@ -90,7 +90,7 @@ TigerGraph can automatically extract the account name from the file URI, so ther
 
 image::data-loading:azure-storage-account.png[Azure Access Keys tab]
 
-**S**ervice principal authentication*:
+*Service principal authentication*:
 
 To use service principal authentication, you must first register your TigerGraph instance as an application and grant it access to your storage account.
 
