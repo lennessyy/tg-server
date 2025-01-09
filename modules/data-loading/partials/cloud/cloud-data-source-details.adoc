@@ -41,7 +41,7 @@ For more information, see Amazon documentation on using IAM roles for Amazon EC2
 [#temporary-credentials]
 *Temporary Credentials*
 
-In addition, we support AWS temporary credentials.
+In addition, AWS temporary credentials are supported.
 A temporary credential can be generated from the AWS CLI. For example:
 [source,bash]
 aws sts assume-role --role-arn arn:aws:iam::<account-id>:role/<role> --role-session-name "<session-name>"
@@ -75,7 +75,7 @@ Example temporary credential from AWS
 
 === Azure Blob Storage
 
-We support two types of authentication:
+The connector supports two types of authentication:
 
 *Shared key authentication*:
 
