@@ -8,20 +8,23 @@ Also, three data object formats are supported: CSV, JSON, and Parquet.
 
 === AWS S3
 
-AWS uses the standard IAM credential provider and uses your access key for authentication.
+The connector offers two methods for authentication:
+
+* The standard IAM credential provider using your access key
+* AWS Identity and Access Management (IAM) role associated with the EC2 instance
 
 Access keys can be used for an individual user or for an IAM role.
-See Using IAM Roles for Amazon EC2 for more information.
+For the access key method, include the following fields in the data source connection:
 
 [source,json]
 {
-    "type": "s3",
-    "access.key": "<access key>",
-    "secret.key": "<secret key>"
+  "type": "s3",
+  "access.key": "<access key>",
+  "secret.key": "<secret key>"
 }
 
 For the IAM role method, you must attach an IAM role to all the EC2 instances which constitute your TigerGraph database cluster.
- Include the following fields in the data source connection:
+Include the following fields in the data source connection:
 
 [source,json]
 {
@@ -39,7 +42,6 @@ For more information, see Amazon documentation on using IAM roles for Amazon EC2
 *Temporary Credentials*
 
 In addition, AWS temporary credentials are supported.
-
 A temporary credential can be generated from the AWS CLI. For example:
 [source,bash]
 aws sts assume-role --role-arn arn:aws:iam::<account-id>:role/<role> --role-session-name "<session-name>"
