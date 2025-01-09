@@ -8,19 +8,40 @@ Also, three data object formats are supported: CSV, JSON, and Parquet.
 
 === AWS S3
 
-AWS uses the standard IAM credential provider and uses your access key for authentication.
+The connector offers two methods for authentication:
+
+* The standard IAM credential provider using your access key
+* AWS Identity and Access Management (IAM) role associated with the EC2 instance
 
 Access keys can be used for an individual user or for an IAM role.
-See Using IAM Roles for Amazon EC2 for more information.
+For the access key method, include the following fields in the data source connection:
 
 [source,json]
 {
-    "type": "s3",
-    "access.key": "<access key>",
-    "secret.key": "<secret key>"
+  "type": "s3",
+  "access.key": "<access key>",
+  "secret.key": "<secret key>"
 }
 
-For temporary access to a bucket, we support AWS temporary credentials.
+For the IAM role method, you must attach an IAM role to all the EC2 instances which constitute your TigerGraph database cluster.
+ Include the following fields in the data source connection:
+
+[source,json]
+{
+  "type": "s3",
+  "file.reader.settings.fs.s3a.aws.credentials.provider": "com.amazonaws.auth.InstanceProfileCredentialsProvider",
+  "access.key": "none",
+  "secret.key": "none"
+}
+
+NOTE: Beginning with v3.10.1, you may omit the `access.key` and `secret.key` fields if you are using the IAM role method.
+
+For more information, see Amazon documentation on using IAM roles for Amazon EC2.
+
+[#temporary-credentials]
+*Temporary Credentials*
+
+In addition, AWS temporary credentials are supported.
 A temporary credential can be generated from the AWS CLI. For example:
 [source,bash]
 aws sts assume-role --role-arn arn:aws:iam::<account-id>:role/<role> --role-session-name "<session-name>"
@@ -54,7 +75,7 @@ Example temporary credential from AWS
 
 === Azure Blob Storage
 
-We support two types of authentication:
+The connector supports two types of authentication:
 
 *Shared key authentication*:
 
