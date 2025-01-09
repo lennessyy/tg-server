@@ -3,7 +3,8 @@
 == Prerequisites
 
 This guide assumes some basic understanding of TigerGraph's query language GSQL.
-Refer to the xref:gsql-ref:tutorials:gsql-101/index.adoc[] and xref:gsql-ref:intro:index.adoc[] to get started using GSQL.
+Refer to the link:https://github.com/tigergraph/ecosys/blob/master/demos/guru_scripts/docker/tutorial/4.x/README.md[GSQL V3 Tutorial]
+to get started using GSQL.
 
 == Key Concepts
 RBAC Row policy introduces a number of key concepts:

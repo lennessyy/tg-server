@@ -22,9 +22,6 @@
 //Database Definition
 * xref:database-definition.adoc[Create Database]
 ** xref:intro:multigraph-overview.adoc[]
-//** xref:{page-component-version}@gsql-ref:tutorials:gsql-101/index.adoc[]
-//** xref:{page-component-version}@gsql-ref:tutorials:pattern-matching/index.adoc[]
-//** xref:{page-component-version}@gsql-ref:tutorials:accumulators-tutorial.adoc[]
 
 
 
