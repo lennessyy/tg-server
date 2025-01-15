@@ -67,6 +67,53 @@ echo -e "bootstrap.servers=$(gmyip):9092\nenable.idempotence=true" > /home/tiger
 
 gadmin config set System.CDC.ProducerConfig @/home/tigergraph/test_cdc/cdc_producer_config
 ----
+The full list of entries for configuration file of `System.CDC.ProducerConfig` can be viewed in table "Global configuration properties" here: https://github.com/confluentinc/librdkafka/blob/v1.1.0/CONFIGURATION.md#global-configuration-properties.
+
+Only properties marked with P(Producer) or *(both Producer and Consumer) are applicable. 
+
+==== Kafka Security
+
+There are some entries of `System.CDC.ProducerConfig` to enhance security of communication to external kafka, besides the must-have entry `bootstrap.servers`.
+
+[NOTE]
+====
+1. When using local path in any entry, for example: `sasl.kerberos.keytab` or `ssl.ca.location`, the local file must exist and be consistent on all nodes in TigerGraph cluster.
+2. The entry `sasl.jaas.config` is not applicable, because it is only for JAVA-based kafka client, while librdkafka in TigerGraph engine is C++ library.
+====
+
+Example 1: Authenticating with SASL/PLAIN
+
+[console]
+----
+security.protocol=SASL_PLAINTEXT
+sasl.mechanisms=PLAIN
+sasl.username=<username>
+sasl.password=<password>
+----
+
+Example 2: Authenticating with SASL/GSSAPI
+[console]
+----
+security.protocol=SASL_PLAINTEXT
+sasl.mechanism=GSSAPI
+sasl.kerberos.service.name=kafka
+sasl.kerberos.principal=<user@EXAMPLE.COM>
+sasl.kerberos.keytab=</path/to/user.keytab>
+----
+
+More reference: https://github.com/confluentinc/librdkafka/wiki/Using-SASL-with-librdkafka
+
+Example 3: Authenticating with SASL/PLAIN and Encrypted with SSL
+[console]
+----
+security.protocol=SASL_SSL
+sasl.mechanisms=PLAIN
+sasl.username=<username>
+sasl.password=<password>
+ssl.ca.location=<path/to/ca.pem>
+ssl.certificate.location=<path/to/cert.pem>
+ssl.key.location=<path/to/key.pem>
+----
 
 === System.CDC.TopicConfig
 .This is the CDC topic config entry:
@@ -84,6 +131,10 @@ echo -e "name=cdc_topic" > /home/tigergraph/test_cdc/cdc_topic_config
 
 gadmin config set System.CDC.TopicConfig @/home/tigergraph/test_cdc/cdc_topic_config
 ----
+The full list of entries for configuration file of `System.CDC.TopicConfig` can be viewed in table "Topic configuration properties" here: https://github.com/edenhill/librdkafka/blob/v1.1.0/CONFIGURATION.md#topic-configuration-properties.
+
+Only properties marked with P(Producer) or *(both Producer and Consumer) are applicable.
+
 
 For other configuration settings please see the xref:_other_configuration_settings_table[Other Configuration Settings Table].
 
@@ -92,6 +143,8 @@ For other configuration settings please see the xref:_other_configuration_settin
 This tutorial will walk you through how to set up a TigerGraph CDC service.
 
 . Setup external Kafka service for CDC messages
++
+This step is to set up an external Kafka service managed by the user for storing CDC messages. Certain parts can be skipped if an active Zookeeper or Kafka service is already available.
 +
 .Download external Kafka package
 +
